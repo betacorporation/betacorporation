@@ -25,7 +25,7 @@ type Spec = { [K in keyof typeof OPTIONS]: string } & { pages: number; copies: n
 const QUANTITIES = [25, 50, 100, 250, 500, 1000];
 const LABELS: Record<keyof typeof OPTIONS, string> = { type: "Publication type", size: "Document size", paper: "Inner paper", colour: "Interior colour", binding: "Binding", lamination: "Cover finish", turnaround: "Turnaround", delivery: "Delivery" };
 
-export function printQuoteMessage(spec: Spec) {
+function printQuoteMessage(spec: Spec) {
   return [
     "Hello Beta Corporation, I'd like a print quote:",
     `• ${LABELS.type}: ${spec.type}`,
