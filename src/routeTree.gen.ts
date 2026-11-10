@@ -17,11 +17,15 @@ import { Route as ElitehostRouteImport } from './routes/elitehost'
 import { Route as FrostwoodcrmRouteImport } from './routes/frostwoodcrm'
 import { Route as HrSystemRouteImport } from './routes/hr-system'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrintingRouteImport } from './routes/printing'
+import { Route as ProductsRouteImport } from './routes/products'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as WebsitesRouteImport } from './routes/websites'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio_.$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesCategoryIndexRouteImport } from './routes/services.$category.index'
@@ -67,6 +71,11 @@ const IndustriesRoute = IndustriesRouteImport.update({
   path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
@@ -82,6 +91,11 @@ const PrintingRoute = PrintingRouteImport.update({
   path: '/printing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -90,6 +104,16 @@ const SolutionsRoute = SolutionsRouteImport.update({
 const WebsitesRoute = WebsitesRouteImport.update({
   id: '/websites',
   path: '/websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
@@ -122,12 +146,16 @@ export interface FileRoutesByFullPath {
   '/frostwoodcrm': typeof FrostwoodcrmRoute
   '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
   '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category/': typeof ServicesCategoryIndexRoute
@@ -141,12 +169,16 @@ export interface FileRoutesByTo {
   '/frostwoodcrm': typeof FrostwoodcrmRoute
   '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
   '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category': typeof ServicesCategoryIndexRoute
@@ -161,12 +193,16 @@ export interface FileRoutesById {
   '/frostwoodcrm': typeof FrostwoodcrmRoute
   '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
   '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/portfolio_/$slug': typeof PortfolioSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category/': typeof ServicesCategoryIndexRoute
@@ -182,12 +218,16 @@ export interface FileRouteTypes {
     | '/frostwoodcrm'
     | '/hr-system'
     | '/industries'
+    | '/partners'
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/products'
     | '/solutions'
     | '/websites'
+    | '/blog/$slug'
     | '/portfolio/$slug'
+    | '/blog/'
     | '/services/'
     | '/services/$category/$service'
     | '/services/$category/'
@@ -201,12 +241,16 @@ export interface FileRouteTypes {
     | '/frostwoodcrm'
     | '/hr-system'
     | '/industries'
+    | '/partners'
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/products'
     | '/solutions'
     | '/websites'
+    | '/blog/$slug'
     | '/portfolio/$slug'
+    | '/blog'
     | '/services'
     | '/services/$category/$service'
     | '/services/$category'
@@ -220,12 +264,16 @@ export interface FileRouteTypes {
     | '/frostwoodcrm'
     | '/hr-system'
     | '/industries'
+    | '/partners'
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/products'
     | '/solutions'
     | '/websites'
+    | '/blog/$slug'
     | '/portfolio_/$slug'
+    | '/blog/'
     | '/services/'
     | '/services/$category/$service'
     | '/services/$category/'
@@ -240,12 +288,16 @@ export interface RootRouteChildren {
   FrostwoodcrmRoute: typeof FrostwoodcrmRoute
   HrSystemRoute: typeof HrSystemRoute
   IndustriesRoute: typeof IndustriesRoute
+  PartnersRoute: typeof PartnersRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
   PrintingRoute: typeof PrintingRoute
+  ProductsRoute: typeof ProductsRoute
   SolutionsRoute: typeof SolutionsRoute
   WebsitesRoute: typeof WebsitesRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ServicesCategoryServiceRoute: typeof ServicesCategoryServiceRoute
   ServicesCategoryIndexRoute: typeof ServicesCategoryIndexRoute
@@ -309,6 +361,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio': {
       id: '/portfolio'
       path: '/portfolio'
@@ -330,6 +389,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrintingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -342,6 +408,20 @@ declare module '@tanstack/react-router' {
       path: '/websites'
       fullPath: '/websites'
       preLoaderRoute: typeof WebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio_/$slug': {
@@ -384,12 +464,16 @@ const rootRouteChildren: RootRouteChildren = {
   FrostwoodcrmRoute: FrostwoodcrmRoute,
   HrSystemRoute: HrSystemRoute,
   IndustriesRoute: IndustriesRoute,
+  PartnersRoute: PartnersRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
   PrintingRoute: PrintingRoute,
+  ProductsRoute: ProductsRoute,
   SolutionsRoute: SolutionsRoute,
   WebsitesRoute: WebsitesRoute,
+  BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ServicesCategoryServiceRoute: ServicesCategoryServiceRoute,
   ServicesCategoryIndexRoute: ServicesCategoryIndexRoute,
