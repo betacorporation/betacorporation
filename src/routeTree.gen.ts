@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ChamaboxRouteImport } from './routes/chamabox'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ElitehostRouteImport } from './routes/elitehost'
+import { Route as FrostwoodcrmRouteImport } from './routes/frostwoodcrm'
+import { Route as HrSystemRouteImport } from './routes/hr-system'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -33,9 +37,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChamaboxRoute = ChamaboxRouteImport.update({
+  id: '/chamabox',
+  path: '/chamabox',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElitehostRoute = ElitehostRouteImport.update({
+  id: '/elitehost',
+  path: '/elitehost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrostwoodcrmRoute = FrostwoodcrmRouteImport.update({
+  id: '/frostwoodcrm',
+  path: '/frostwoodcrm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrSystemRoute = HrSystemRouteImport.update({
+  id: '/hr-system',
+  path: '/hr-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesRoute = IndustriesRouteImport.update({
@@ -92,7 +116,11 @@ const ServicesCategoryServiceRoute = ServicesCategoryServiceRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
@@ -107,7 +135,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
@@ -123,7 +155,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
   '/industries': typeof IndustriesRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
@@ -140,7 +176,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/chamabox'
     | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
     | '/industries'
     | '/portfolio'
     | '/pricing'
@@ -155,7 +195,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/chamabox'
     | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
     | '/industries'
     | '/portfolio'
     | '/pricing'
@@ -170,7 +214,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/chamabox'
     | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
     | '/industries'
     | '/portfolio'
     | '/pricing'
@@ -186,7 +234,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChamaboxRoute: typeof ChamaboxRoute
   ContactRoute: typeof ContactRoute
+  ElitehostRoute: typeof ElitehostRoute
+  FrostwoodcrmRoute: typeof FrostwoodcrmRoute
+  HrSystemRoute: typeof HrSystemRoute
   IndustriesRoute: typeof IndustriesRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
@@ -215,11 +267,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chamabox': {
+      id: '/chamabox'
+      path: '/chamabox'
+      fullPath: '/chamabox'
+      preLoaderRoute: typeof ChamaboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/elitehost': {
+      id: '/elitehost'
+      path: '/elitehost'
+      fullPath: '/elitehost'
+      preLoaderRoute: typeof ElitehostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frostwoodcrm': {
+      id: '/frostwoodcrm'
+      path: '/frostwoodcrm'
+      fullPath: '/frostwoodcrm'
+      preLoaderRoute: typeof FrostwoodcrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-system': {
+      id: '/hr-system'
+      path: '/hr-system'
+      fullPath: '/hr-system'
+      preLoaderRoute: typeof HrSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries': {
@@ -298,7 +378,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChamaboxRoute: ChamaboxRoute,
   ContactRoute: ContactRoute,
+  ElitehostRoute: ElitehostRoute,
+  FrostwoodcrmRoute: FrostwoodcrmRoute,
+  HrSystemRoute: HrSystemRoute,
   IndustriesRoute: IndustriesRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
