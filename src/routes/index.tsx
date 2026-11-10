@@ -19,12 +19,34 @@ const MOBILE_NAV_GROUPS = [
   { title: "Products", links: [{ label: "ChamaBox", href: "/chamabox" }, { label: "EliteHost", href: "/elitehost" }, { label: "Elite HRIS", href: "/hr-system" }, { label: "Frostwood CRM", href: "/frostwoodcrm" }, { label: "Industries", href: "/industries" }, { label: "Solutions", href: "/solutions" }, { label: "Products", href: "/products" }] },
 ];
 
+const TESTIMONIAL_COUNT = 6;
+
 const HERO_WORDS = ["Web Design", "Digital Marketing", "Brand Identity", "SEO Strategy", "E-Commerce"];
 
 function Index() {
   const [openMenu0, setOpenMenu0] = useState(null as string | null);
   const menuRoot0 = useRef<Element | null>(null);
   const [quoteOpen, setQuoteOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [testimonial, setTestimonial] = useState(0);
+  useEffect(() => {
+    // Top progress bar and floating quote pill follow page scroll, as on the source.
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); };
+  }, []);
+  useEffect(() => {
+    // Testimonials auto-advance every 5 seconds; manual navigation restarts the timer.
+    const timer = window.setTimeout(() => setTestimonial(index => (index + 1) % TESTIMONIAL_COUNT), 5000);
+    return () => window.clearTimeout(timer);
+  }, [testimonial]);
+  const testimonialSlideClass = (index: number) => index === testimonial ? "opacity-100 \x74ranslate-x-0" : index < testimonial ? "opacity-0 \x2dtranslate-x-full" : "opacity-0 \x74ranslate-x-full";
+  const showQuotePill = scrollProgress > 30;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuTrigger = useRef<HTMLButtonElement | null>(null);
   const mobileMenuClose = useRef<HTMLButtonElement | null>(null);
@@ -343,9 +365,9 @@ function Index() {
       </header>
       <main className={"\x66lex-grow"}>
         <div className={"top-0 left-0 h-[3px] bg-transparent [&]:pointer-events-none [&]:fixed [right:0px] [z-index:60]"}>
-          <div className={"h-full \x62g-gradient-to-r \x66rom-primary \x74o-accent \x74ransition-[\x77idth] \x64uration-150 \x65ase-out [animation-duration:0.15s] [transition-property:width]"} style={{ width: "0%" }} />
+          <div className={"h-full \x62g-gradient-to-r \x66rom-primary \x74o-accent \x74ransition-[\x77idth] \x64uration-150 \x65ase-out [animation-duration:0.15s] [transition-property:width]"} style={{ width: `${scrollProgress}%` }} />
         </div>
-        <div className={"\x2dtranslate-x-1/\x32 transition-all \x64uration-500 opacity-0 \x74ranslate-y-4 [&]:pointer-events-none [&]:fixed [animation-duration:0.5s] [bottom:5rem] [left:50%] [z-index:50]"}>
+        <div className={`\x2dtranslate-x-1/\x32 transition-all \x64uration-500 ${showQuotePill ? "opacity-100 \x74ranslate-y-0" : "opacity-0 \x74ranslate-y-4 [&]:pointer-events-none"} [&]:fixed [animation-duration:0.5s] [bottom:5rem] [left:50%] [z-index:50]`}>
           <a className={"inline-flex items-center gap-2 \x70x-5 \x70y-2.\x35 rounded-full \x62g-primary text-white \x73hadow-lg \x73hadow-primary/\x330 \x68over:\x73hadow-xl \x68over:\x73hadow-primary/\x340 \x68over:\x73cale-105 transition-all \x74ext-sm \x66ont-medium"} href="/contact"><svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg>Get a Free Quote<svg className="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
         </div>
         <div className={"h-full w-full \x62g-background \x62g-[\x72adial-gradient(#\x655e7eb_1px,\x74ransparent_1px)] [background-size:16px_16px] \x64ark:\x62g-[\x72adial-gradient(#\x66fffff20_1px,\x74ransparent_1px)] [&]:fixed [inset:0px] [z-index:-10]"} />
@@ -1020,7 +1042,7 @@ function Index() {
                   <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
                 </svg>
                 <div className={"flex items-center justify-center [&]:min-h-[220px] [&]:relative [overflow:hidden]"}>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-0 \x2dtranslate-x-full [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(0)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1044,7 +1066,7 @@ function Index() {
                       <p className={"\x74ext-sm text-muted-foreground"}>CEO, Sherrane Homes</p>
                     </div>
                   </div>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-0 \x2dtranslate-x-full [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(1)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1068,7 +1090,7 @@ function Index() {
                       <p className={"\x74ext-sm text-muted-foreground"}>Partner, Lusweti &amp; Nabutola</p>
                     </div>
                   </div>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-100 \x74ranslate-x-0 [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(2)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1092,7 +1114,7 @@ function Index() {
                       <p className={"\x74ext-sm text-muted-foreground"}>Founder, Sage Beans Export</p>
                     </div>
                   </div>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-0 \x74ranslate-x-full [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(3)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1116,7 +1138,7 @@ function Index() {
                       <p className={"\x74ext-sm text-muted-foreground"}>Director, Regal Scope Logistics</p>
                     </div>
                   </div>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-0 \x74ranslate-x-full [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(4)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1140,7 +1162,7 @@ function Index() {
                       <p className={"\x74ext-sm text-muted-foreground"}>MD, Electron Engineers</p>
                     </div>
                   </div>
-                  <div className={"flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 opacity-0 \x74ranslate-x-full [&]:absolute [animation-duration:0.5s] [inset:0px]"}>
+                  <div className={`flex flex-col items-center justify-center text-center \x70x-8 \x6dd:\x70x-16 transition-all \x64uration-500 ${testimonialSlideClass(5)} [&]:absolute [animation-duration:0.5s] [inset:0px]`}>
                     <div className="flex mb-4 [gap:0.25rem]">
                       <svg className={"h-4 w-4 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))] [fill:rgb(250,204,21)]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -1166,19 +1188,19 @@ function Index() {
                   </div>
                 </div>
                 <div className="flex justify-center gap-2 mt-6">
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [animation-duration:0.3s] [width:0.5rem]"} aria-label="View testimonial 1" />
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [animation-duration:0.3s] [width:0.5rem]"} aria-label="View testimonial 2" />
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-primary [animation-duration:0.3s] [width:2rem]"} aria-label="View testimonial 3" />
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [animation-duration:0.3s] [width:0.5rem]"} aria-label="View testimonial 4" />
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [animation-duration:0.3s] [width:0.5rem]"} aria-label="View testimonial 5" />
-                  <button className={"h-2 rounded-full transition-all \x64uration-300 \x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [animation-duration:0.3s] [width:0.5rem]"} aria-label="View testimonial 6" />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 0 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 1" aria-current={testimonial === 0 ? "true" : undefined} onClick={() => setTestimonial(0)} />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 1 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 2" aria-current={testimonial === 1 ? "true" : undefined} onClick={() => setTestimonial(1)} />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 2 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 3" aria-current={testimonial === 2 ? "true" : undefined} onClick={() => setTestimonial(2)} />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 3 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 4" aria-current={testimonial === 3 ? "true" : undefined} onClick={() => setTestimonial(3)} />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 4 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 5" aria-current={testimonial === 4 ? "true" : undefined} onClick={() => setTestimonial(4)} />
+                  <button type="button" className={`h-2 rounded-full transition-all \x64uration-300 ${testimonial === 5 ? "\x62g-primary [width:2rem]" : "\x62g-gray-300 \x64ark:\x62g-gray-600 \x68over:\x62g-gray-400 [width:0.5rem]"} [animation-duration:0.3s]`} aria-label="View testimonial 6" aria-current={testimonial === 5 ? "true" : undefined} onClick={() => setTestimonial(5)} />
                 </div>
-                <button className={"left-0 \x2dtranslate-y-1/\x32 w-9 h-9 rounded-full \x62g-white/\x380 \x64ark:\x62g-gray-800/\x380 \x73hadow-md flex items-center justify-center \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 transition-colors [&]:absolute [top:50%]"} aria-label="Previous testimonial">
+                <button className={"left-0 \x2dtranslate-y-1/\x32 w-9 h-9 rounded-full \x62g-white/\x380 \x64ark:\x62g-gray-800/\x380 \x73hadow-md flex items-center justify-center \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 transition-colors [&]:absolute [top:50%]"} type="button" aria-label="Previous testimonial" onClick={() => setTestimonial(index => (index + TESTIMONIAL_COUNT - 1) % TESTIMONIAL_COUNT)}>
                   <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m15 18-6-6 6-6" />
                   </svg>
                 </button>
-                <button className={"\x2dtranslate-y-1/\x32 w-9 h-9 rounded-full \x62g-white/\x380 \x64ark:\x62g-gray-800/\x380 \x73hadow-md flex items-center justify-center \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 transition-colors [&]:absolute [right:0px] [top:50%]"} aria-label="Next testimonial">
+                <button className={"\x2dtranslate-y-1/\x32 w-9 h-9 rounded-full \x62g-white/\x380 \x64ark:\x62g-gray-800/\x380 \x73hadow-md flex items-center justify-center \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 transition-colors [&]:absolute [right:0px] [top:50%]"} type="button" aria-label="Next testimonial" onClick={() => setTestimonial(index => (index + 1) % TESTIMONIAL_COUNT)}>
                   <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m9 18 6-6-6-6" />
                   </svg>
