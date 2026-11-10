@@ -24,7 +24,7 @@ function ProjectPage() {
   const { slug } = Route.useLoaderData();
   const project = findProject(slug)!;
   const index = PORTFOLIO_PROJECTS.findIndex(item => item.slug === slug);
-  const more = [1, 2, 3].map(offset => PORTFOLIO_PROJECTS[(index + offset) % PORTFOLIO_PROJECTS.length]);
+  const more = [1, 2, 3].map(offset => PORTFOLIO_PROJECTS[(index + offset) % PORTFOLIO_PROJECTS.length]).filter((item): item is (typeof PORTFOLIO_PROJECTS)[number] => Boolean(item));
   return (
     <SitePage>
       <section className="bg-gradient-to-br from-[hsl(var(--primary)/0.08)] via-[hsl(var(--background))] to-[hsl(var(--accent)/0.08)] py-12 md:py-16">
