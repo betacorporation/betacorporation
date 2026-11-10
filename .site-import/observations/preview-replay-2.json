@@ -1,0 +1,126 @@
+[
+ {
+  "layout": "desk",
+  "check": "chat panel opens",
+  "text": "Let's Talk! We reply in minutes Hey there! \ud83d\udc4b Reach out to us directly on WhatsApp or start a live chat. David Esabwa Lead Designer \u2022 Online Gregory Shikutwa Project Manager \u2022 Online Start Live Chat T",
+  "links": [
+   "https://wa.me/254708927425",
+   "https://wa.me/254796429489"
+  ]
+ },
+ {
+  "layout": "desk",
+  "check": "chat panel closes",
+  "ok": true,
+  "focus": "Open chat"
+ },
+ {
+  "layout": "desk",
+  "check": "chatgpt chip -> link",
+  "input": "Safari & Tours",
+  "href": "https://chatgpt.com/?q=I%20want%20to%20build%20a%20website%2Fsystem%20for%3A%20Safari%20%26%20Tours.%20Would%20Elite%20Designs%20Kenya%20(ht"
+ },
+ {
+  "layout": "desk",
+  "check": "chatgpt Escape closes",
+  "ok": true
+ },
+ {
+  "layout": "desk",
+  "check": "testimonials",
+  "before": "\u201cProfessional, responsive",
+  "after_next": "\u201cFrom concept to launch, ",
+  "after_dot6": "\u201cElite Designs didn't jus",
+  "after_5s": "\u201cElite Designs transforme"
+ },
+ {
+  "layout": "desk",
+  "check": "portfolio scroll right",
+  "scrollLeft": 1110,
+  "left_btn": 1
+ },
+ {
+  "layout": "desk",
+  "check": "portfolio scroll left",
+  "scrollLeft": 0
+ },
+ {
+  "layout": "desk",
+  "check": "pill at 0",
+  "visible": "0",
+  "bar": "0%"
+ },
+ {
+  "layout": "desk",
+  "check": "pill at 2200",
+  "visible": "1",
+  "bar": "38.8075%"
+ },
+ {
+  "layout": "desk",
+  "check": "errors",
+  "errs": []
+ },
+ {
+  "layout": "phone",
+  "check": "chat panel opens",
+  "text": "Let's Talk! We reply in minutes Hey there! \ud83d\udc4b Reach out to us directly on WhatsApp or start a live chat. David Esabwa Lead Designer \u2022 Online Gregory Shikutwa Project Manager \u2022 Online Start Live Chat T",
+  "links": [
+   "https://wa.me/254708927425",
+   "https://wa.me/254796429489"
+  ]
+ },
+ {
+  "layout": "phone",
+  "check": "chat panel closes",
+  "ok": true,
+  "focus": "Open chat"
+ },
+ {
+  "layout": "phone",
+  "check": "chatgpt chip -> link",
+  "input": "Safari & Tours",
+  "href": "https://chatgpt.com/?q=I%20want%20to%20build%20a%20website%2Fsystem%20for%3A%20Safari%20%26%20Tours.%20Would%20Elite%20Designs%20Kenya%20(ht"
+ },
+ {
+  "layout": "phone",
+  "check": "chatgpt Escape closes",
+  "ok": true
+ },
+ {
+  "layout": "phone",
+  "check": "testimonials",
+  "before": "\u201cProfessional, responsive",
+  "after_next": "\u201cFrom concept to launch, ",
+  "after_dot6": "\u201cElite Designs didn't jus",
+  "after_5s": "\u201cElite Designs transforme"
+ },
+ {
+  "layout": "phone",
+  "check": "portfolio scroll right",
+  "scrollLeft": 300,
+  "left_btn": 1
+ },
+ {
+  "layout": "phone",
+  "check": "portfolio scroll left",
+  "scrollLeft": 0
+ },
+ {
+  "layout": "phone",
+  "check": "pill at 0",
+  "visible": "0",
+  "bar": "0%"
+ },
+ {
+  "layout": "phone",
+  "check": "pill at 2200",
+  "visible": "0",
+  "bar": "25.6829%"
+ },
+ {
+  "layout": "phone",
+  "check": "errors",
+  "errs": []
+ }
+]
