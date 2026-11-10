@@ -208,7 +208,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta Chama</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our flagship SaaS for chama and investment group management in Kenya.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Chama and investment group management made simple.</p>
                 </div>
               </a>
             </li>
@@ -224,7 +224,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta Hosting</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our sister hosting company — client login, domain search and web hosting.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Domains, fast web hosting and business email.</p>
                 </div>
               </a>
             </li>
@@ -240,7 +240,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta HRIS</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>White-label HR system — 14 modules from recruitment to exit. Try the live demo.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Complete HR system — from recruitment to exit.</p>
                 </div>
               </a>
             </li>
