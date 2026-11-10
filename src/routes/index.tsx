@@ -1606,7 +1606,7 @@ function ImportedSectionCraftingDigitalECommerce() {
   useEffect(() => {
     // Typing headline: type a word, hold, delete, move to the next word.
     if (reducedMotion) return;
-    const word = HERO_WORDS[wordIndex];
+    const word = HERO_WORDS[wordIndex] ?? "";
     let delay = deleting ? 45 : 90;
     if (!deleting && typedLength === word.length) delay = 1500;
     const timer = window.setTimeout(() => {
@@ -1622,7 +1622,7 @@ function ImportedSectionCraftingDigitalECommerce() {
     const timer = window.setTimeout(() => setVideoPhase(phase => !phase), videoPhase ? 40000 : 10000);
     return () => window.clearTimeout(timer);
   }, [videoPhase, reducedMotion]);
-  const headlineWord = reducedMotion ? HERO_WORDS[0] : HERO_WORDS[wordIndex].slice(0, typedLength);
+  const headlineWord = reducedMotion ? (HERO_WORDS[0] ?? "") : (HERO_WORDS[wordIndex] ?? "").slice(0, typedLength);
   const endVideo = () => setVideoPhase(false);
   return (
     <section className={"w-full h-[600px] \x6dd:\x68-[\x3700px] \x62g-gray-900 text-white [&]:relative [overflow:hidden]"}>
