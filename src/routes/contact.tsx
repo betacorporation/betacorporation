@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteFooter, SiteHeader, SiteOverlays } from "@/components/site/SiteChrome";
+import { SocialIcon } from "@/components/site/SiteChrome";
+import { CONTACT_PERSON, EMAIL, LOCATION, PHONE_DISPLAY, PHONE_TEL, SOCIALS, WHATSAPP_URL } from "@/lib/site-contact";
 import capturedCSS from "../styles/pages/contact.css?raw";
 
 export const Route = createFileRoute("/contact")({
@@ -39,7 +41,12 @@ function Index() {
                 <h3 className={"\x66ont-semibold \x74ext-2xl [letter-spacing:-0.025em]"}>Send Us a Message</h3>
               </div>
               <div className="p-6 pt-0">
-                <form className={"\x73pace-y-6"}>
+                <form className={"\x73pace-y-6"} onSubmit={event => {
+                  event.preventDefault();
+                  const [name = "", email = "", subject = "", message = ""] = Array.from(event.currentTarget.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea")).map(field => field.value.trim());
+                  const body = `${message}\n\n— ${name}${email ? ` (${email})` : ""}`;
+                  window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject || `Website enquiry from ${name || "a visitor"}`)}&body=${encodeURIComponent(body)}`;
+                }}>
                   <div className={"\x73pace-y-2"}>
                     <label className={"\x74ext-sm \x66ont-medium \x6ceading-none \x70eer-disabled:\x63ursor-not-allowed \x70eer-disabled:\x6fpacity-70"} htmlFor="«r0»-form-item">Full Name</label>
                     <input className={"flex h-10 w-full rounded-md \x62order \x62order-input \x62g-background \x70x-3 \x70y-2 \x74ext-base \x72ing-offset-background \x66ile:\x62order-0 \x66ile:\x62g-transparent \x66ile:\x74ext-sm \x66ile:\x66ont-medium \x66ile:\x74ext-foreground \x70laceholder:\x74ext-muted-foreground \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 \x64isabled:\x63ursor-not-allowed disabled:opacity-50 \x6dd:\x74ext-sm"} placeholder="John Doe" id="«r0»-form-item" aria-describedby="«r0»-form-item-description" aria-invalid="false" defaultValue="" name="name" />
@@ -67,45 +74,49 @@ function Index() {
                 </div>
                 <div className={"p-6 pt-0 \x73pace-y-4 \x74ext-sm"}>
                   <div className="flex items-start [gap:1rem]">
-                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <div>
-                      <p className={"\x66ont-semibold"}>Our Office Location</p>
-                      <p className={"\x74ext-foreground/\x380"}>Wood Avenue Park Apartments</p>
-                      <p className={"\x74ext-foreground/\x380"}>Kilimani, First Floor, Suite F8</p>
-                      <p className={"\x74ext-foreground/\x380"}>Nairobi, Kenya</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start [gap:1rem]">
-                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect width="20" height="16" x="2" y="4" rx="2" />
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
+                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
                     <div>
                       <p className={"\x66ont-semibold"}>Email Us Directly</p>
-                      <a className={"\x74ext-foreground/\x380 \x68over:\x74ext-primary"} href="mailto:beta.corporation11@gmail.com">beta.corporation11@gmail.com</a>
+                      <a className={"\x74ext-foreground/\x380 \x68over:\x74ext-primary [overflow-wrap:anywhere]"} href={`mailto:${EMAIL}`}>{EMAIL}</a>
                     </div>
                   </div>
                   <div className="flex items-start [gap:1rem]">
-                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
+                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                     <div>
                       <p className={"\x66ont-semibold"}>Give Us a Call</p>
-                      <p className={"\x74ext-foreground/\x380"}>Gregory: <a className={"\x68over:\x74ext-primary"} href="tel:+254729683696">+254 729 683 696</a></p>
-                      <p className={"\x74ext-foreground/\x380"}>David: <a className={"\x68over:\x74ext-primary"} href="tel:+254729683696">+254 729 683 696</a></p>
+                      <p className={"\x74ext-foreground/\x380"}>{CONTACT_PERSON}: <a className={"\x68over:\x74ext-primary"} href={PHONE_TEL}>{PHONE_DISPLAY}</a></p>
+                    </div>
+                  </div>
+                  <div className="flex items-start [gap:1rem]">
+                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                    <div>
+                      <p className={"\x66ont-semibold"}>Chat on WhatsApp</p>
+                      <a className={"\x74ext-foreground/\x380 \x68over:\x74ext-primary"} href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PHONE_DISPLAY}</a>
+                    </div>
+                  </div>
+                  <div className="flex items-start [gap:1rem]">
+                    <svg className="h-5 w-5 text-primary mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                    <div>
+                      <p className={"\x66ont-semibold"}>Where We Work</p>
+                      <p className={"\x74ext-foreground/\x380"}>{LOCATION} — meetings by appointment or online</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className={"rounded-lg \x62order-0 \x73hadow-lg \x62g-card p-6 [color:hsl(var(--card-foreground))]"}>
-                <h3 className={"\x66ont-bold \x74ext-lg text-primary mb-2"}>Find Our Studio</h3>
-                <p className={"\x74ext-sm \x74ext-foreground/\x380 mb-4"}>Our creative hub is located in Kilimani, Nairobi. We'd love to discuss your project in person. Appointments are recommended for consultations to ensure we can give you our undivided attention.</p>
-                <div className="h-64 w-full">
-                  <img className={"rounded-lg \x73hadow-md"} style={{ border: "0px", width: "672.5px", maxWidth: "100%", height: "auto" }} alt="" src="/site-assets/4e12b37aa76b537b.png" data-site-import-static-fallback="video" />
-                </div>
+                <h3 className={"\x66ont-bold \x74ext-lg text-primary mb-2"}>Follow Us</h3>
+                <p className={"\x74ext-sm \x74ext-foreground/\x380 mb-4"}>See our latest work and get in touch on social media.</p>
+                <ul className={"\x73pace-y-3"}>
+                  {SOCIALS.map(social => (
+                    <li key={social.network} className="flex items-center [gap:0.75rem]">
+                      <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0"}><SocialIcon network={social.network} /></span>
+                      <span className={"\x74ext-sm"}>
+                        <span className={"block \x74ext-xs text-muted-foreground"}>{social.network}</span>
+                        {social.href ? <a className={"\x66ont-medium \x68over:\x74ext-primary"} href={social.href} target="_blank" rel="noopener noreferrer">{social.handle}</a> : <span className="italic text-muted-foreground">{social.handle}</span>}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
