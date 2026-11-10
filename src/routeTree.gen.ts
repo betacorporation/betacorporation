@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as WebsitesRouteImport } from './routes/websites'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio_.$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesCategoryIndexRouteImport } from './routes/services.$category.index'
@@ -44,6 +45,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WebsitesRoute = WebsitesRouteImport.update({
+  id: '/websites',
+  path: '/websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/portfolio_/$slug',
   path: '/portfolio/$slug',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/websites': typeof WebsitesRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/websites': typeof WebsitesRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/websites': typeof WebsitesRoute
   '/portfolio_/$slug': typeof PortfolioSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/websites'
     | '/portfolio/$slug'
     | '/services/'
     | '/services/$category/$service'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/websites'
     | '/portfolio/$slug'
     | '/services'
     | '/services/$category/$service'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/websites'
     | '/portfolio_/$slug'
     | '/services/'
     | '/services/$category/$service'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
+  WebsitesRoute: typeof WebsitesRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ServicesCategoryServiceRoute: typeof ServicesCategoryServiceRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/websites': {
+      id: '/websites'
+      path: '/websites'
+      fullPath: '/websites'
+      preLoaderRoute: typeof WebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio_/$slug': {
       id: '/portfolio_/$slug'
       path: '/portfolio/$slug'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
+  WebsitesRoute: WebsitesRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ServicesCategoryServiceRoute: ServicesCategoryServiceRoute,
