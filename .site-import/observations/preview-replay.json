@@ -40,25 +40,26 @@
   "check": "hero typing",
   "samples": [
    "Brand Identity|",
-   "Brand Ident|",
-   "Brand Iden|",
-   "Brand|",
-   "B|",
+   "Brand Identi|",
+   "Brand I|",
+   "Brand |",
+   "Br|",
    "Digital Marketing|",
-   "Digital M|",
+   "Digital Marketin|",
+   "Digita|",
    "SEO Strategy|",
-   "SEO Strat|",
-   "SEO |",
-   "|"
+   "SEO St|",
+   "S|"
   ]
  },
  {
   "check": "hero video plays",
   "result": {
-   "a": 7.279975,
-   "b": 8.78189,
+   "a": 7.288351,
+   "b": 8.788457,
    "ready": 4,
-   "src": "e-44e3-86f9-fa4d6b758348/hero-mobile.mp4"
+   "src": "-4517-b4ba-5aeca6177247/hero-desktop.mp4",
+   "n": 2
   }
  },
  {
