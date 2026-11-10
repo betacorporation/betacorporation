@@ -1,0 +1,107 @@
+[
+ {
+  "check": "no popup on load",
+  "ok": true
+ },
+ {
+  "check": "desktop Services hover",
+  "expanded": "true",
+  "links": [
+   "Print & Publications -> /printing",
+   "Web Development -> /services/web-development",
+   "Digital Marketing -> /services/digital-marketing",
+   "Creative Services -> /services/btl-media-creative",
+   "Domain Registration -> https://elitehost.co.ke/",
+   "Explore All Services -> /services"
+  ]
+ },
+ {
+  "check": "desktop Services closes on leave",
+  "ok": true
+ },
+ {
+  "check": "desktop Products hover",
+  "expanded": "true",
+  "links": [
+   "ChamaBox -> /chamabox",
+   "EliteHost -> /elitehost",
+   "Elite HRIS -> /hr-system",
+   "Frostwood CRM -> /frostwoodcrm",
+   "Industries -> /industries",
+   "Solutions -> /solutions",
+   "Products -> /products"
+  ]
+ },
+ {
+  "check": "desktop Products closes on leave",
+  "ok": true
+ },
+ {
+  "check": "hero typing",
+  "samples": [
+   "Brand Identity|",
+   "Brand Ident|",
+   "Brand Iden|",
+   "Brand|",
+   "B|",
+   "Digital Marketing|",
+   "Digital M|",
+   "SEO Strategy|",
+   "SEO Strat|",
+   "SEO |",
+   "|"
+  ]
+ },
+ {
+  "check": "hero video plays",
+  "result": {
+   "a": 7.279975,
+   "b": 8.78189,
+   "ready": 4,
+   "src": "e-44e3-86f9-fa4d6b758348/hero-mobile.mp4"
+  }
+ },
+ {
+  "check": "popup auto-opens ~25s",
+  "ok": true
+ },
+ {
+  "check": "popup Escape closes",
+  "ok": true
+ },
+ {
+  "check": "header Get a Quote",
+  "href": "/contact"
+ },
+ {
+  "check": "hero CTAs",
+  "links": [
+   "DIGITALLY FIT AWARDS 2026 WINNER -> #awards",
+   "Get a Free Quote -> /contact",
+   "View Our Work -> /portfolio"
+  ]
+ },
+ {
+  "check": "page errors",
+  "errs": []
+ },
+ {
+  "check": "phone menu opens",
+  "visible": true,
+  "expanded": "true",
+  "text": "Navigation Menu  MAIN  Home About Us Partners Portfolio Blog Pricing Contact  SERVICES  All Services Web Development Digital Marketing Creative Services Print & Publications Website Packages Domain Re"
+ },
+ {
+  "check": "phone menu Escape closes",
+  "ok": true,
+  "focus": "Open menu"
+ },
+ {
+  "check": "phone menu close button",
+  "ok": true
+ },
+ {
+  "check": "phone menu link About Us",
+  "url": "http://localhost:8080/about"
+ }
+]
