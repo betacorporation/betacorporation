@@ -8,7 +8,16 @@ import heroDesktopVideo from "../assets/hero-desktop.mp4.asset.json";
 import heroMobileVideo from "../assets/hero-mobile.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "Elite Designs Kenya - Custom Web Design \u0026 Digital Solutions in Nairobi" }] }),
+  head: () => ({
+    meta: [
+      { title: "Elite Designs Kenya - Custom Web Design \u0026 Digital Solutions in Nairobi" },
+      { name: "description", content: "Elite Designs Kenya builds bespoke websites, e-commerce stores and IT solutions in Nairobi that elevate your brand and drive measurable growth." },
+      { property: "og:title", content: "Elite Designs Kenya - Custom Web Design \u0026 Digital Solutions" },
+      { property: "og:description", content: "Award-winning Nairobi web design agency: bespoke websites, digital marketing, domains and custom software." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   staticData: { importedDocument: { html: { "className": "__variable_b021ee __variable_f166df", "lang": "en" }, body: { "className": "\x66ont-body \x61ntialiased \x66lex \x66lex-col \x6din-h-screen \x62g-background \x74ext-foreground" } } },
   component: Index,
 });
