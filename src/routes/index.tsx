@@ -1637,9 +1637,9 @@ function ImportedSectionCraftingDigitalECommerce() {
           </>
         )}
       </div>
-      <div className={"\x62g-gradient-to-br \x66rom-black/\x370 \x76ia-[#\x32b01ef]/\x330 \x74o-black/\x360 \x74ransition-opacity \x64uration-700 ${videoPhase ? "opacity-50" : "opacity-100"} [&]:absolute [inset:0px] [transition-property:opacity] [z-index:10]`} />
+      <div className={`\x62g-gradient-to-br \x66rom-black/\x370 \x76ia-[#\x32b01ef]/\x330 \x74o-black/\x360 \x74ransition-opacity \x64uration-700 ${videoPhase ? "opacity-50" : "opacity-100"} [&]:absolute [inset:0px] [transition-property:opacity] [z-index:10]`} />
       <div className={"\x62g-[\x72adial-gradient(\x65llipse_at_top_right,\x72gba(\x337,\x3150,\x3190,\x30.\x32),\x74ransparent_60%)] [&]:absolute [inset:0px] [z-index:10]"} />
-      <div className={"\x63ontainer \x6dx-auto \x70x-4 flex flex-col items-center justify-center text-center transition-all \x64uration-700 \x65ase-in-out ${videoPhase ? "opacity-0 pointer-events-none scale-[0.98]" : "opacity-100 \x73cale-100"} [&]:absolute [inset:0px] [width:100%] [z-index:20]`} aria-hidden={videoPhase ? "true" : "false"}>
+      <div className={`\x63ontainer \x6dx-auto \x70x-4 flex flex-col items-center justify-center text-center transition-all \x64uration-700 \x65ase-in-out ${videoPhase ? "opacity-0 pointer-events-none scale-[0.98]" : "opacity-100 \x73cale-100"} [&]:absolute [inset:0px] [width:100%] [z-index:20]`} aria-hidden={videoPhase ? "true" : "false"}>
         <div className={"flex items-center justify-center gap-2 mb-6 \x61nimate-fade-in-up [&]:flex-wrap"} style={{ transform: "translateY(0px)", opacity: "1" }}>
           <div className={"inline-flex items-center gap-2 \x70x-4 rounded-full \x62order \x62order-white/\x320 \x62g-white/\x310 \x62ackdrop-blur-sm [padding-bottom:0.375rem] [padding-top:0.375rem]"}>
             <svg className={"h-3.5 w-3.5 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
