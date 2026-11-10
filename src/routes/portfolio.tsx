@@ -1051,24 +1051,6 @@ function Index() {
               </div>
             </div>
             <div className={"rounded-lg \x62g-card group \x73hadow-lg \x68over:\x73hadow-xl transition-all \x64uration-300 \x65ase-in-out \x74ransform \x68over:\x73cale-[\x31.\x302] \x62order flex flex-col [animation-duration:0.3s] [color:hsl(var(--card-foreground))] [overflow:hidden]"}>
-              <a href="/portfolio/elite-designs-kenya">
-                <div className={"flex-col \x73pace-y-1.\x35 w-full cursor-pointer \x62g-secondary/\x350 flex items-center justify-center [&]:aspect-square [&]:relative [overflow:hidden] [padding:0px]"}>
-                  <img className={"\x62lur-lg opacity-25 \x73cale-110 [&]:object-cover [&]:pointer-events-none"} style={{ position: "absolute", height: "100%", width: "100%", inset: "0px", color: "transparent" }} alt="" aria-hidden="true" loading="lazy" decoding="async" data-nimg="fill" src="/site-assets/2fdd23cc4a961a43.jpg" />
-                  <img className={"p-3 \x74ransition-transform \x64uration-500 \x67roup-hover:\x73cale-105 [&]:object-contain"} style={{ position: "absolute", height: "100%", width: "100%", inset: "0px", color: "transparent" }} alt="Screenshot of the Beta Corporation project" loading="lazy" decoding="async" data-nimg="fill" src="/site-assets/2fdd23cc4a961a43.jpg" />
-                  <div className={"\x62g-gradient-to-t \x66rom-black/\x340 \x76ia-transparent \x74o-transparent [&]:pointer-events-none [&]:absolute [inset:0px]"} />
-                  <div className={"[&]:absolute [bottom:0.5rem] [left:0.5rem] [z-index:10]"}>
-                    <span className={"\x62g-accent \x70x-3 \x74ext-xs \x66ont-semibold rounded-full \x73hadow-md [color:hsl(var(--accent-foreground))] [padding-bottom:0.375rem] [padding-top:0.375rem]"}>Branding &amp; Graphic Design</span>
-                  </div>
-                </div>
-              </a>
-              <div className={"p-6 flex flex-col \x66lex-grow"}>
-                <a href="/portfolio/elite-designs-kenya">
-                  <h3 className={"\x66ont-semibold \x74ext-xl text-primary mb-4 cursor-pointer \x68over:\x75nderline [letter-spacing:-0.025em]"}>Beta Corporation</h3>
-                </a>
-                <a className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md \x74ext-sm \x66ont-medium \x72ing-offset-background transition-colors \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 disabled:opacity-50 [&\x5fsvg]:\x73ize-4 \x62g-primary text-primary-foreground \x68over:\x62g-primary/\x390 h-10 \x70x-4 \x70y-2 mt-auto [&:disabled]:pointer-events-none"} href="/portfolio/elite-designs-kenya"><svg className={"mr-2 h-4 w-4 [&]:pointer-events-none [flex-shrink:0]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 7v14" /><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></svg> View Case Study</a>
-              </div>
-            </div>
-            <div className={"rounded-lg \x62g-card group \x73hadow-lg \x68over:\x73hadow-xl transition-all \x64uration-300 \x65ase-in-out \x74ransform \x68over:\x73cale-[\x31.\x302] \x62order flex flex-col [animation-duration:0.3s] [color:hsl(var(--card-foreground))] [overflow:hidden]"}>
               <a href="/portfolio/madenitawe">
                 <div className={"flex-col \x73pace-y-1.\x35 w-full cursor-pointer \x62g-secondary/\x350 flex items-center justify-center [&]:aspect-square [&]:relative [overflow:hidden] [padding:0px]"}>
                   <img className={"\x62lur-lg opacity-25 \x73cale-110 [&]:object-cover [&]:pointer-events-none"} style={{ position: "absolute", height: "100%", width: "100%", inset: "0px", color: "transparent" }} alt="" aria-hidden="true" loading="lazy" decoding="async" data-nimg="fill" src="/site-assets/de802af22294c624.jpg" />

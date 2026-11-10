@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       { title: "Beta Corporation - Custom Web Design \u0026 Digital Solutions in Nairobi" },
       { name: "description", content: "Beta Corporation builds bespoke websites, e-commerce stores and IT solutions in Nairobi that elevate your brand and drive measurable growth." },
       { property: "og:title", content: "Beta Corporation - Custom Web Design \u0026 Digital Solutions" },
-      { property: "og:description", content: "Award-winning Nairobi web design agency: bespoke websites, digital marketing, domains and custom software." },
+      { property: "og:description", content: "Beta Corporation designs bespoke websites, digital marketing, branding and custom software for growing businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -955,17 +955,6 @@ function ImportedSectionCraftingDigitalECommerce() {
             </svg>
             <span className={"\x74ext-xs \x66ont-medium \x74ext-white/\x390 [&]:uppercase [letter-spacing:0.025em]"}>Kenya's Premium Digital Agency</span>
           </div>
-          <a className={"inline-flex items-center gap-2 \x70x-4 rounded-full \x62order \x62order-yellow-400/\x340 \x62g-yellow-400/\x310 \x62ackdrop-blur-sm \x68over:\x62g-yellow-400/\x320 transition-colors [padding-bottom:0.375rem] [padding-top:0.375rem]"} href="#awards">
-            <svg className={"h-3.5 w-3.5 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-              <path d="M4 22h16" />
-              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
-              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
-              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-            </svg>
-            <span className={"\x74ext-xs \x66ont-medium \x74ext-white/\x390 [&]:uppercase [letter-spacing:0.025em]"}>Digitally Fit Awards 2026 Winner</span>
-          </a>
         </div>
         <h1 className={"\x74ext-4xl \x73m:\x74ext-5xl \x6dd:\x74ext-7xl \x66ont-headline \x66ont-bold mb-4 \x61nimate-fade-in-up"} style={{ animationDelay: "0.15s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>Crafting Digital<br /><span className={"\x62g-gradient-to-r \x66rom-white \x76ia-blue-200 \x74o-[#\x32596be] bg-clip-text [color:transparent]"}>{headlineWord}</span><span className={"\x61nimate-pulse [color:rgba(255,255,255,0.8)]"}>|</span></h1>
         <p className={"\x74ext-base \x73m:\x74ext-lg mb-8 \x61nimate-fade-in-up [color:rgba(255,255,255,0.75)] [max-width:42rem]"} style={{ animationDelay: "0.3s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>We build bespoke websites and innovative IT solutions that elevate your brand and drive measurable growth.</p>
