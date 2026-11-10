@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
+import heroDesktopVideo from "../assets/hero-desktop.mp4.asset.json";
+import heroMobileVideo from "../assets/hero-mobile.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [{ title: "Elite Designs Kenya - Custom Web Design \u0026 Digital Solutions in Nairobi" }] }),
@@ -11,9 +13,44 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const MOBILE_NAV_GROUPS = [
+  { title: "Main", links: [{ label: "Home", href: "/" }, { label: "About Us", href: "/about" }, { label: "Partners", href: "/partners" }, { label: "Portfolio", href: "/portfolio" }, { label: "Blog", href: "/blog" }, { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" }] },
+  { title: "Services", links: [{ label: "All Services", href: "/services" }, { label: "Web Development", href: "/services/web-development" }, { label: "Digital Marketing", href: "/services/digital-marketing" }, { label: "Creative Services", href: "/services/btl-media-creative" }, { label: "Print & Publications", href: "/printing" }, { label: "Website Packages", href: "/websites" }, { label: "Domain Registration", href: "https://elitehost.co.ke/" }] },
+  { title: "Products", links: [{ label: "ChamaBox", href: "/chamabox" }, { label: "EliteHost", href: "/elitehost" }, { label: "Elite HRIS", href: "/hr-system" }, { label: "Frostwood CRM", href: "/frostwoodcrm" }, { label: "Industries", href: "/industries" }, { label: "Solutions", href: "/solutions" }, { label: "Products", href: "/products" }] },
+];
+
+const HERO_WORDS = ["Web Design", "Digital Marketing", "Brand Identity", "SEO Strategy", "E-Commerce"];
+
 function Index() {
   const [openMenu0, setOpenMenu0] = useState(null as string | null);
   const menuRoot0 = useRef<Element | null>(null);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuTrigger = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuClose = useRef<HTMLButtonElement | null>(null);
+  const quoteClose = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    // Source opens the quote popup about 25 seconds after the page loads.
+    const timer = window.setTimeout(() => setQuoteOpen(true), 25000);
+    return () => window.clearTimeout(timer);
+  }, []);
+  useEffect(() => {
+    if (!quoteOpen) return;
+    quoteClose.current?.focus();
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setQuoteOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [quoteOpen]);
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    mobileMenuClose.current?.focus();
+    const trigger = mobileMenuTrigger.current;
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setMobileMenuOpen(false); };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prevOverflow; trigger?.focus(); };
+  }, [mobileMenuOpen]);
   useEffect(() => {
     if (!openMenu0) return;
     const closeOutside = (event: MouseEvent) => {
@@ -35,14 +72,14 @@ function Index() {
               <img className="rounded-md" style={{ color: "transparent" }} alt="Elite Designs Kenya Logo" width="130" height="32" decoding="async" data-nimg="1" src="/site-assets/0f4ca2301c5d3ecb.png" />
             </a>
             <div className={"hidden \x6cg:\x66lex items-center [gap:0.25rem]"}>
-              <nav className={"flex items-center justify-center [&]:flex-1 [&]:relative [max-width:max-content] [z-index:10]"} aria-label="Main" dir="ltr">
+              <nav className={"flex items-center justify-center [&]:flex-1 [&]:relative [max-width:max-content] [z-index:10]"} aria-label="Main" dir="ltr" onMouseLeave={() => setOpenMenu0(null)}>
                 <div style={{ position: "relative" }}>
                   <ul className={"group flex list-none items-center justify-center \x73pace-x-1 [&]:flex-1"} dir="ltr">
                     <li>
-                      <button className={"group inline-flex h-10 w-max items-center justify-center rounded-md \x62g-background \x70x-4 \x70y-2 \x66ont-medium transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground \x66ocus:\x6futline-none disabled:opacity-50 \x64ata-[\x61ctive]:\x62g-accent/\x350 \x64ata-[\x73tate=\x6fpen]:\x62g-accent/\x350 group \x74ext-sm [&:disabled]:pointer-events-none"} aria-expanded={openMenu0 === "observed-0"} onClick={event => { event.preventDefault(); event.stopPropagation(); setOpenMenu0(open => open === "observed-0" ? null : "observed-0"); }} id="radix-«R12db»-trigger-radix-«Rn2db»" data-state="closed" aria-controls="radix-«R12db»-content-radix-«Rn2db»">Services{" "}<svg className={"ml-1 h-3 \x74ransition \x64uration-200 \x67roup-data-[\x73tate=\x6fpen]:\x72otate-180 [&]:relative [animation-duration:0.2s] [top:1px] [transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [width:0.75rem]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
+                      <button className={"group inline-flex h-10 w-max items-center justify-center rounded-md \x62g-background \x70x-4 \x70y-2 \x66ont-medium transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground \x66ocus:\x6futline-none disabled:opacity-50 \x64ata-[\x61ctive]:\x62g-accent/\x350 \x64ata-[\x73tate=\x6fpen]:\x62g-accent/\x350 group \x74ext-sm [&:disabled]:pointer-events-none"} aria-expanded={openMenu0 === "observed-0"} onMouseEnter={() => setOpenMenu0("observed-0")} onClick={event => { event.preventDefault(); event.stopPropagation(); setOpenMenu0(open => open === "observed-0" ? null : "observed-0"); }} data-state={openMenu0 === "observed-0" ? "open" : "closed"} id="radix-«R12db»-trigger-radix-«Rn2db»" aria-controls="radix-«R12db»-content-radix-«Rn2db»">Services{" "}<svg className={"ml-1 h-3 \x74ransition \x64uration-200 \x67roup-data-[\x73tate=\x6fpen]:\x72otate-180 [&]:relative [animation-duration:0.2s] [top:1px] [transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [width:0.75rem]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
                     </li>
                     <li>
-                      <button className={"group inline-flex h-10 w-max items-center justify-center rounded-md \x62g-background \x70x-4 \x70y-2 \x66ont-medium transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground \x66ocus:\x6futline-none disabled:opacity-50 \x64ata-[\x61ctive]:\x62g-accent/\x350 \x64ata-[\x73tate=\x6fpen]:\x62g-accent/\x350 group \x74ext-sm [&:disabled]:pointer-events-none"} aria-expanded={openMenu0 === "observed-1"} onClick={event => { event.preventDefault(); event.stopPropagation(); setOpenMenu0(open => open === "observed-1" ? null : "observed-1"); }} id="radix-«R12db»-trigger-radix-«R172db»" data-state="closed" aria-controls="radix-«R12db»-content-radix-«R172db»">Products{" "}<svg className={"ml-1 h-3 \x74ransition \x64uration-200 \x67roup-data-[\x73tate=\x6fpen]:\x72otate-180 [&]:relative [animation-duration:0.2s] [top:1px] [transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [width:0.75rem]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
+                      <button className={"group inline-flex h-10 w-max items-center justify-center rounded-md \x62g-background \x70x-4 \x70y-2 \x66ont-medium transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground \x66ocus:\x6futline-none disabled:opacity-50 \x64ata-[\x61ctive]:\x62g-accent/\x350 \x64ata-[\x73tate=\x6fpen]:\x62g-accent/\x350 group \x74ext-sm [&:disabled]:pointer-events-none"} aria-expanded={openMenu0 === "observed-1"} onMouseEnter={() => setOpenMenu0("observed-1")} onClick={event => { event.preventDefault(); event.stopPropagation(); setOpenMenu0(open => open === "observed-1" ? null : "observed-1"); }} data-state={openMenu0 === "observed-1" ? "open" : "closed"} id="radix-«R12db»-trigger-radix-«R172db»" aria-controls="radix-«R12db»-content-radix-«R172db»">Products{" "}<svg className={"ml-1 h-3 \x74ransition \x64uration-200 \x67roup-data-[\x73tate=\x6fpen]:\x72otate-180 [&]:relative [animation-duration:0.2s] [top:1px] [transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [width:0.75rem]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
                     </li>
                     <li>
                       <a className={"group inline-flex h-10 w-max items-center justify-center rounded-md \x62g-background \x70x-4 \x70y-2 \x66ont-medium transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground \x66ocus:\x6futline-none disabled:opacity-50 \x64ata-[\x61ctive]:\x62g-accent/\x350 \x64ata-[\x73tate=\x6fpen]:\x62g-accent/\x350 \x74ext-sm [&:disabled]:pointer-events-none"} href="/websites">Websites</a>
@@ -70,13 +107,228 @@ function Index() {
                     </li>
                   </ul>
                 </div>
-                <div className={"left-0 flex justify-center [&]:absolute [top:100%]"} />
+                <div className={"left-0 flex justify-center [&]:absolute [top:100%]"}>
+                  {openMenu0 && (
+                    <div data-state="open" data-orientation="horizontal" className="origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg animate-in zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]" style={{ "--radix-navigation-menu-viewport-width": "520px", "--radix-navigation-menu-viewport-height": openMenu0 === "observed-0" ? "478px" : "566px" } as CSSProperties}>
+      <div className={"left-0 top-0 w-full \x64ata-[\x6dotion^=\x66rom-]:\x61nimate-in \x64ata-[\x6dotion^=\x74o-]:\x61nimate-out \x64ata-[\x6dotion^=\x66rom-]:\x66ade-in \x64ata-[\x6dotion^=\x74o-]:\x66ade-out \x64ata-[\x6dotion=\x66rom-end]:\x73lide-in-from-right-52 \x64ata-[\x6dotion=\x66rom-start]:\x73lide-in-from-left-52 \x64ata-[\x6dotion=\x74o-end]:\x73lide-out-to-right-52 \x64ata-[\x6dotion=\x74o-start]:\x73lide-out-to-left-52 \x6dd:\x61bsolute \x6dd:\x77-auto"} aria-hidden={openMenu0 === "observed-0" ? undefined : (undefined)} data-state={openMenu0 === "observed-0" ? undefined : (undefined)} hidden={openMenu0 === "observed-0" ? undefined : (true)} inert={openMenu0 === "observed-0" ? undefined : (false)} {...{ open: (openMenu0 === "observed-0" ? undefined : (false)) ? "" : undefined }} style={openMenu0 === "observed-0" ? {} : ({ display: "none" })} id="radix-«R12db»-content-radix-«Rn2db»" aria-labelledby="radix-«R12db»-trigger-radix-«Rn2db»" dir="ltr" data-site-import-observed-popup="">
+        <div className="w-[520px] p-4">
+          <ul className="grid grid-cols-1 gap-2">
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/printing">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                    <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
+                    <rect x="6" y="14" width="12" height="8" rx="1" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Print &amp; Publications</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Books, manuals, booklets, annual reports &amp; policy documents with live price estimator.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/web-development">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Web Development</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Custom websites, eCommerce stores, and platforms built for performance.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/digital-marketing">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" x2="12" y1="20" y2="10" />
+                    <line x1="18" x2="18" y1="20" y2="4" />
+                    <line x1="6" x2="6" y1="20" y2="16" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Digital Marketing</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>SEO, PPC, and social media strategies to boost your visibility.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/btl-media-creative">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m14.622 17.897-10.68-2.913" />
+                    <path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" />
+                    <path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Creative Services</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Graphic design, UI/UX, and branding that tells your story.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="https://elitehost.co.ke/" rel="noopener noreferrer" target="_blank">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" />
+                    <path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" />
+                    <path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Domain Registration</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Register .co.ke, .ke, .com and 25+ extensions with hosting and email — via our sister company EliteHost.</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div className={"mt-3 pt-3 \x62order-t"}>
+            <a className={"group flex items-center gap-2 rounded-md \x70x-3 \x70y-2.\x35 \x74ext-sm \x66ont-medium text-primary \x68over:\x62g-primary/\x35 transition-colors"} href="/services">Explore All Services<svg className={"h-3.5 w-3.5 \x74ransition-transform \x67roup-hover:\x74ranslate-x-0.\x35"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+          </div>
+        </div>
+      </div>
+      <div className={"left-0 top-0 w-full \x64ata-[\x6dotion^=\x66rom-]:\x61nimate-in \x64ata-[\x6dotion^=\x74o-]:\x61nimate-out \x64ata-[\x6dotion^=\x66rom-]:\x66ade-in \x64ata-[\x6dotion^=\x74o-]:\x66ade-out \x64ata-[\x6dotion=\x66rom-end]:\x73lide-in-from-right-52 \x64ata-[\x6dotion=\x66rom-start]:\x73lide-in-from-left-52 \x64ata-[\x6dotion=\x74o-end]:\x73lide-out-to-right-52 \x64ata-[\x6dotion=\x74o-start]:\x73lide-out-to-left-52 \x6dd:\x61bsolute \x6dd:\x77-auto"} aria-hidden={openMenu0 === "observed-1" ? undefined : (undefined)} data-state={openMenu0 === "observed-1" ? undefined : (undefined)} hidden={openMenu0 === "observed-1" ? undefined : (true)} inert={openMenu0 === "observed-1" ? undefined : (false)} {...{ open: (openMenu0 === "observed-1" ? undefined : (false)) ? "" : undefined }} style={openMenu0 === "observed-1" ? {} : ({ display: "none" })} id="radix-«R12db»-content-radix-«R172db»" aria-labelledby="radix-«R12db»-trigger-radix-«R172db»" dir="ltr" data-site-import-observed-popup="">
+        <div className="w-[520px] p-4">
+          <ul className="grid grid-cols-1 gap-2">
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/chamabox">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                    <path d="m3.3 7 8.7 5 8.7-5" />
+                    <path d="M12 22V12" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>ChamaBox</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our flagship SaaS for chama and investment group management in Kenya.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/elitehost">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+                    <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+                    <line x1="6" x2="6.01" y1="6" y2="6" />
+                    <line x1="6" x2="6.01" y1="18" y2="18" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>EliteHost</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our sister hosting company — client login, domain search and web hosting.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/hr-system">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Elite HRIS</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>White-label HR system — 14 modules from recruitment to exit. Try the live demo.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/frostwoodcrm">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m10 20-1.25-2.5L6 18" />
+                    <path d="M10 4 8.75 6.5 6 6" />
+                    <path d="m14 20 1.25-2.5L18 18" />
+                    <path d="m14 4 1.25 2.5L18 6" />
+                    <path d="m17 21-3-6h-4" />
+                    <path d="m17 3-3 6 1.5 3" />
+                    <path d="M2 12h6.5L10 9" />
+                    <path d="m20 10-1.5 2 1.5 2" />
+                    <path d="M22 12h-6.5L14 15" />
+                    <path d="m4 10 1.5 2L4 14" />
+                    <path d="m7 21 3-6-1.5-3" />
+                    <path d="m7 3 3 6h4" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Frostwood CRM</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our CRM, invoicing and M-Pesa payments platform for growing businesses.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/industries">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                    <path d="M10 6h4" />
+                    <path d="M10 10h4" />
+                    <path d="M10 14h4" />
+                    <path d="M10 18h4" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Industries</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Tailored digital solutions for 18+ industries across Kenya.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/solutions">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                    <path d="M9 18h6" />
+                    <path d="M10 22h4" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Solutions</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Service + business type packages designed for your niche.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/products">
+                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                    <path d="M3 6h18" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                </span>
+                <div className={"\x73pace-y-1"}>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Products</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Ready-made digital products and growth packages.</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+                    </div>
+                  )}
+                </div>
               </nav>
             </div>
             <div className="flex items-center gap-3">
               <a className={"items-center justify-center gap-2 \x66ont-medium \x72ing-offset-background transition-colors \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 disabled:opacity-50 [&\x5fsvg]:\x73ize-4 \x62g-primary text-primary-foreground \x68over:\x62g-primary/\x390 h-9 rounded-md \x70x-3 hidden \x73m:\x69nline-flex \x74ext-xs [&]:whitespace-nowrap [&:disabled]:pointer-events-none"} href="/contact">Get a Quote</a>
               <div className={"\x6cg:\x68idden"}>
-                <button className={"inline-flex items-center justify-center gap-2 rounded-md \x74ext-sm \x66ont-medium \x72ing-offset-background transition-colors \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 disabled:opacity-50 [&\x5fsvg]:\x73ize-4 \x68over:\x62g-accent \x68over:\x74ext-accent-foreground h-9 w-9 [&]:whitespace-nowrap [&:disabled]:pointer-events-none"} type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-«R5idb»" data-state="closed">
+                <button ref={mobileMenuTrigger} aria-expanded={mobileMenuOpen} aria-haspopup="dialog" onClick={() => setMobileMenuOpen(true)} className={"inline-flex items-center justify-center gap-2 rounded-md \x74ext-sm \x66ont-medium \x72ing-offset-background transition-colors \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 disabled:opacity-50 [&\x5fsvg]:\x73ize-4 \x68over:\x62g-accent \x68over:\x74ext-accent-foreground h-9 w-9 [&]:whitespace-nowrap [&:disabled]:pointer-events-none"} type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-«R5idb»" data-state="closed">
                   <svg className={"h-5 w-5 [&]:pointer-events-none [flex-shrink:0]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="4" x2="20" y1="12" y2="12" />
                     <line x1="4" x2="20" y1="6" y2="6" />
@@ -957,9 +1209,10 @@ function Index() {
           </span>
         </button>
       </div>
-      <div className={"\x62g-black/\x360 flex items-center justify-center p-4 \x61nimate-fade-in-up [&]:fixed [inset:0px] [overflow-y:auto] [z-index:100]"} style={{ transform: "translateY(0px)", opacity: "1" }}>
+      {quoteOpen && (
+      <div className={"\x62g-black/\x360 flex items-center justify-center p-4 \x61nimate-fade-in-up [&]:fixed [inset:0px] [overflow-y:auto] [z-index:100]"} style={{ transform: "translateY(0px)", opacity: "1" }} role="dialog" aria-modal="true" aria-label="Request a quote" onClick={event => { if (event.target === event.currentTarget) setQuoteOpen(false); }}>
         <div className={"w-full \x6dy-8 \x62g-card rounded-2xl \x73hadow-2xl grid \x6dd:\x67rid-cols-2 [&]:relative [max-width:56rem] [overflow:hidden]"}>
-          <button className={"h-9 w-9 rounded-full \x62g-background/\x380 \x68over:\x62g-background flex items-center justify-center transition-colors [&]:absolute [right:0.75rem] [top:0.75rem] [z-index:10]"} aria-label="Close">
+          <button className={"h-9 w-9 rounded-full \x62g-background/\x380 \x68over:\x62g-background flex items-center justify-center transition-colors [&]:absolute [right:0.75rem] [top:0.75rem] [z-index:10]"} aria-label="Close" type="button" ref={quoteClose} onClick={() => setQuoteOpen(false)}>
             <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 6 6 18" />
               <path d="m6 6 12 12" />
@@ -1037,11 +1290,7 @@ function Index() {
                     <path d="m6 9 6 6 6-6" />
                   </svg>
                 </button>
-                <div>
-                  <span role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="bb-customSelect-VPoot-panel" aria-activedescendant="bb-customSelect-VPoot-selectedOption" tabIndex={0}>
-                    <span>🇰🇪 +254</span>
-                  </span>
-                  <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue="+254">
+                <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue="+254">
                     <option value="+254" selected>🇰🇪 +254</option>
                     <option value="+256">🇺🇬 +256</option>
                     <option value="+255">🇹🇿 +255</option>
@@ -1051,17 +1300,6 @@ function Index() {
                     <option value="+44">🇬🇧 +44</option>
                     <option value="+1">🇺🇸 +1</option>
                   </select>
-                  <div id="bb-customSelect-VPoot-panel" role="listbox">
-                    <div role="option" id="bb-customSelect-VPoot-selectedOption">🇰🇪 +254</div>
-                    <div role="option">🇺🇬 +256</div>
-                    <div role="option">🇹🇿 +255</div>
-                    <div role="option">🇷🇼 +250</div>
-                    <div role="option">🇳🇬 +234</div>
-                    <div role="option">🇿🇦 +27</div>
-                    <div role="option">🇬🇧 +44</div>
-                    <div role="option">🇺🇸 +1</div>
-                  </div>
-                </div>
                 <div className={"\x73pace-y-2 [&]:flex-1"}>
                   <input className={"flex h-10 w-full rounded-md \x62order \x62order-input \x62g-background \x70x-3 \x70y-2 \x74ext-base \x72ing-offset-background \x66ile:\x62order-0 \x66ile:\x62g-transparent \x66ile:\x74ext-sm \x66ile:\x66ont-medium \x66ile:\x74ext-foreground \x70laceholder:\x74ext-muted-foreground \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 \x64isabled:\x63ursor-not-allowed disabled:opacity-50 \x6dd:\x74ext-sm"} placeholder="Phone number*" id="«r3»-form-item" aria-describedby="«r3»-form-item-description" aria-invalid="false" defaultValue="" name="phone" />
                 </div>
@@ -1076,11 +1314,7 @@ function Index() {
                     <path d="m6 9 6 6 6-6" />
                   </svg>
                 </button>
-                <div>
-                  <span role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="bb-customSelect-uj1FG-panel" aria-activedescendant="bb-customSelect-uj1FG-selectedOption" tabIndex={0}>
-                    <span>Website Design &amp; Development</span>
-                  </span>
-                  <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue={"Website Design & Development"}>
+                <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue={"Website Design & Development"}>
                     <option value={"Website Design & Development"}>Website Design &amp; Development</option>
                     <option value="Custom Web Application">Custom Web Application</option>
                     <option value="Digital Marketing">Digital Marketing</option>
@@ -1089,41 +1323,19 @@ function Index() {
                     <option value={"Web Hosting & Domains"}>Web Hosting &amp; Domains</option>
                     <option value="Other">Other</option>
                   </select>
-                  <div id="bb-customSelect-uj1FG-panel" role="listbox">
-                    <div role="option" id="bb-customSelect-uj1FG-selectedOption">Website Design &amp; Development</div>
-                    <div role="option">Custom Web Application</div>
-                    <div role="option">Digital Marketing</div>
-                    <div role="option">Creative / BTL Media</div>
-                    <div role="option">E-commerce Store</div>
-                    <div role="option">Web Hosting &amp; Domains</div>
-                    <div role="option">Other</div>
-                  </div>
-                </div>
                 <button className={"flex h-10 w-full items-center rounded-md \x62order \x62order-input \x62g-background \x70x-3 \x70y-2 \x74ext-sm \x72ing-offset-background \x70laceholder:\x74ext-muted-foreground \x66ocus:\x6futline-none \x66ocus:\x72ing-2 \x66ocus:\x72ing-ring \x66ocus:\x72ing-offset-2 \x64isabled:\x63ursor-not-allowed disabled:opacity-50 [&>\x73pan]:\x6cine-clamp-1 [&]:justify-between"} type="button" role="combobox" aria-controls="radix-«r6»" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed">
                   <span style={{ pointerEvents: "none" }}>Budget range (optional)</span>
                   <svg className="h-4 w-4 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="m6 9 6 6 6-6" />
                   </svg>
                 </button>
-                <div>
-                  <span role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="bb-customSelect-hD5Sv-panel" aria-activedescendant="bb-customSelect-hD5Sv-selectedOption" tabIndex={0}>
-                    <span>Under KES 60,000</span>
-                  </span>
-                  <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue="Under KES 60,000">
+                <select style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} aria-hidden="true" tabIndex={-1} defaultValue="Under KES 60,000">
                     <option value="Under KES 60,000">Under KES 60,000</option>
                     <option value="KES 60,000 – 130,000">KES 60,000 – 130,000</option>
                     <option value="KES 130,000 – 350,000">KES 130,000 – 350,000</option>
                     <option value="KES 350,000+">KES 350,000+</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
-                  <div id="bb-customSelect-hD5Sv-panel" role="listbox">
-                    <div role="option" id="bb-customSelect-hD5Sv-selectedOption">Under KES 60,000</div>
-                    <div role="option">KES 60,000 – 130,000</div>
-                    <div role="option">KES 130,000 – 350,000</div>
-                    <div role="option">KES 350,000+</div>
-                    <div role="option">Not sure yet</div>
-                  </div>
-                </div>
               </div>
               <div className={"\x73pace-y-2"}>
                 <textarea className={"flex w-full rounded-md \x62order \x62order-input \x62g-background \x70x-3 \x70y-2 \x74ext-base \x72ing-offset-background \x70laceholder:\x74ext-muted-foreground \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 \x64isabled:\x63ursor-not-allowed disabled:opacity-50 \x6dd:\x74ext-sm [&]:min-h-[100px] [&]:resize-none"} placeholder="Tell us about your project*" name="message" id="«r7»-form-item" aria-describedby="«r7»-form-item-description" aria-invalid="false" />
@@ -1142,6 +1354,7 @@ function Index() {
           </div>
         </div>
       </div>
+      )}
       <button className={"inline-flex items-center rounded-full \x70x-5 \x70y-3 text-[14.5px] \x66ont-bold text-white \x73hadow-xl transition-all \x64uration-300 \x68over:\x2dtranslate-y-0.\x35 \x68over:\x73hadow-2xl \x61ctive:\x74ranslate-y-0 cursor-pointer [&]:fixed [animation-duration:0.3s] [bottom:1.5rem] [gap:0.625rem] [right:1.5rem] [z-index:50]"} style={{ background: "linear-gradient(135deg, rgb(241, 90, 36) 0%, rgb(234, 88, 12) 100%)", boxShadow: "rgba(241, 90, 36, 0.45) 0px 10px 25px -4px, rgba(0, 0, 0, 0.1) 0px 4px 10px -2px" }} type="button" aria-label="Ask ChatGPT about Elite Designs Kenya">
         <svg className="w-5 h-5 [fill:currentcolor]" viewBox="0 0 24 24">
           <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1683a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4947zm-9.66-5.5873a4.4708 4.4708 0 0 1-.5346-3.0037l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1402-3.1083zM2.3528 8.5298a4.466 4.466 0 0 1 2.3465-1.9634v5.7197a.7854.7854 0 0 0 .3927.6813l5.8333 3.3685-2.02 1.1683a.0757.0757 0 0 1-.0615.0048L3.999 14.636a4.504 4.504 0 0 1-1.6462-6.1062zm16.0375 4.0954l-5.8428-3.3732 2.02-1.1683a.0757.0757 0 0 1 .0615-.0048l4.8447 2.7961a4.504 4.504 0 0 1-1.0834 8.2818v-5.8503a.7854.7854 0 0 0-.3927-.6813zm2.0105-3.0227l-.142-.0852-4.7783-2.7818a.7759.7759 0 0 0-.7854 0L8.8523 10.104V7.7716a.0757.0757 0 0 1 .0331-.0615l4.8447-2.7961a4.504 4.504 0 0 1 6.6496 4.7932zM12.0001 7.2132l3.326 1.9174v3.8348l-3.326 1.9174-3.326-1.9174V9.1306l3.326-1.9174z" />
@@ -1341,230 +1554,92 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className={"left-0 top-0 w-full \x64ata-[\x6dotion^=\x66rom-]:\x61nimate-in \x64ata-[\x6dotion^=\x74o-]:\x61nimate-out \x64ata-[\x6dotion^=\x66rom-]:\x66ade-in \x64ata-[\x6dotion^=\x74o-]:\x66ade-out \x64ata-[\x6dotion=\x66rom-end]:\x73lide-in-from-right-52 \x64ata-[\x6dotion=\x66rom-start]:\x73lide-in-from-left-52 \x64ata-[\x6dotion=\x74o-end]:\x73lide-out-to-right-52 \x64ata-[\x6dotion=\x74o-start]:\x73lide-out-to-left-52 \x6dd:\x61bsolute \x6dd:\x77-auto"} aria-hidden={openMenu0 === "observed-0" ? undefined : (undefined)} data-state={openMenu0 === "observed-0" ? undefined : (undefined)} hidden={openMenu0 === "observed-0" ? undefined : (true)} inert={openMenu0 === "observed-0" ? undefined : (false)} {...{ open: (openMenu0 === "observed-0" ? undefined : (false)) ? "" : undefined }} style={openMenu0 === "observed-0" ? {} : ({ display: "none" })} id="radix-«R12db»-content-radix-«Rn2db»" aria-labelledby="radix-«R12db»-trigger-radix-«Rn2db»" dir="ltr" data-site-import-observed-popup="">
-        <div className="w-[520px] p-4">
-          <ul className="grid grid-cols-1 gap-2">
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/printing">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                    <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
-                    <rect x="6" y="14" width="12" height="8" rx="1" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Print &amp; Publications</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Books, manuals, booklets, annual reports &amp; policy documents with live price estimator.</p>
+      {mobileMenuOpen && (
+        <>
+          <div className="fixed inset-0 z-50 bg-black/80 animate-in fade-in-0" data-state="open" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
+          <div role="dialog" aria-modal="true" aria-labelledby="mobile-nav-title" data-state="open" className="fixed z-50 gap-4 bg-background shadow-lg transition ease-in-out animate-in slide-in-from-right duration-500 inset-y-0 right-0 h-full border-l sm:max-w-sm w-[300px] sm:w-[340px] p-0" tabIndex={-1}>
+            <h2 id="mobile-nav-title" className="text-lg font-semibold text-foreground sr-only">Navigation Menu</h2>
+            <div className="relative overflow-hidden h-full">
+              <div className="h-full w-full rounded-[inherit] overflow-y-auto [scrollbar-width:none]">
+                <div className="flex flex-col min-h-full">
+                  <div className="flex items-center justify-between p-4 border-b">
+                    <a href="/"><img alt="Elite Designs Kenya Logo" width="100" height="25" decoding="async" src="/site-assets/0f4ca2301c5d3ecb.png" style={{ color: "transparent" }} /></a>
+                  </div>
+                  <div className="p-4 space-y-6">
+                    {MOBILE_NAV_GROUPS.map(group => (
+                      <div key={group.title}>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">{group.title}</p>
+                        <div className="space-y-1">
+                          {group.links.map(link => (
+                            <a key={link.href + link.label} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${link.href === "/" ? "bg-primary/10 text-primary" : "text-foreground/70 hover:bg-muted hover:text-foreground"}`} href={link.href} {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setMobileMenuOpen(false)}>{link.label}</a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-auto p-4 border-t">
+                    <a className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full" href="/contact">Get a Free Quote<svg className="size-4 shrink-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+                  </div>
                 </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/web-development">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="16 18 22 12 16 6" />
-                    <polyline points="8 6 2 12 8 18" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Web Development</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Custom websites, eCommerce stores, and platforms built for performance.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/digital-marketing">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" x2="12" y1="20" y2="10" />
-                    <line x1="18" x2="18" y1="20" y2="4" />
-                    <line x1="6" x2="6" y1="20" y2="16" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Digital Marketing</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>SEO, PPC, and social media strategies to boost your visibility.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/services/btl-media-creative">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m14.622 17.897-10.68-2.913" />
-                    <path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" />
-                    <path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Creative Services</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Graphic design, UI/UX, and branding that tells your story.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="https://elitehost.co.ke/" rel="noopener noreferrer" target="_blank">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" />
-                    <path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17" />
-                    <path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" />
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Domain Registration</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Register .co.ke, .ke, .com and 25+ extensions with hosting and email — via our sister company EliteHost.</p>
-                </div>
-              </a>
-            </li>
-          </ul>
-          <div className={"mt-3 pt-3 \x62order-t"}>
-            <a className={"group flex items-center gap-2 rounded-md \x70x-3 \x70y-2.\x35 \x74ext-sm \x66ont-medium text-primary \x68over:\x62g-primary/\x35 transition-colors"} href="/services">Explore All Services<svg className={"h-3.5 w-3.5 \x74ransition-transform \x67roup-hover:\x74ranslate-x-0.\x35"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+              </div>
+            </div>
+            <button ref={mobileMenuClose} type="button" className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2" onClick={() => setMobileMenuOpen(false)}>
+              <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+              <span className="sr-only">Close</span>
+            </button>
           </div>
-        </div>
-      </div>
-      <div className={"left-0 top-0 w-full \x64ata-[\x6dotion^=\x66rom-]:\x61nimate-in \x64ata-[\x6dotion^=\x74o-]:\x61nimate-out \x64ata-[\x6dotion^=\x66rom-]:\x66ade-in \x64ata-[\x6dotion^=\x74o-]:\x66ade-out \x64ata-[\x6dotion=\x66rom-end]:\x73lide-in-from-right-52 \x64ata-[\x6dotion=\x66rom-start]:\x73lide-in-from-left-52 \x64ata-[\x6dotion=\x74o-end]:\x73lide-out-to-right-52 \x64ata-[\x6dotion=\x74o-start]:\x73lide-out-to-left-52 \x6dd:\x61bsolute \x6dd:\x77-auto"} aria-hidden={openMenu0 === "observed-1" ? undefined : (undefined)} data-state={openMenu0 === "observed-1" ? undefined : (undefined)} hidden={openMenu0 === "observed-1" ? undefined : (true)} inert={openMenu0 === "observed-1" ? undefined : (false)} {...{ open: (openMenu0 === "observed-1" ? undefined : (false)) ? "" : undefined }} style={openMenu0 === "observed-1" ? {} : ({ display: "none" })} id="radix-«R12db»-content-radix-«R172db»" aria-labelledby="radix-«R12db»-trigger-radix-«R172db»" dir="ltr" data-site-import-observed-popup="">
-        <div className="w-[520px] p-4">
-          <ul className="grid grid-cols-1 gap-2">
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/chamabox">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-                    <path d="m3.3 7 8.7 5 8.7-5" />
-                    <path d="M12 22V12" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>ChamaBox</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our flagship SaaS for chama and investment group management in Kenya.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/elitehost">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
-                    <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
-                    <line x1="6" x2="6.01" y1="6" y2="6" />
-                    <line x1="6" x2="6.01" y1="18" y2="18" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>EliteHost</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our sister hosting company — client login, domain search and web hosting.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/hr-system">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Elite HRIS</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>White-label HR system — 14 modules from recruitment to exit. Try the live demo.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/frostwoodcrm">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m10 20-1.25-2.5L6 18" />
-                    <path d="M10 4 8.75 6.5 6 6" />
-                    <path d="m14 20 1.25-2.5L18 18" />
-                    <path d="m14 4 1.25 2.5L18 6" />
-                    <path d="m17 21-3-6h-4" />
-                    <path d="m17 3-3 6 1.5 3" />
-                    <path d="M2 12h6.5L10 9" />
-                    <path d="m20 10-1.5 2 1.5 2" />
-                    <path d="M22 12h-6.5L14 15" />
-                    <path d="m4 10 1.5 2L4 14" />
-                    <path d="m7 21 3-6-1.5-3" />
-                    <path d="m7 3 3 6h4" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Frostwood CRM</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our CRM, invoicing and M-Pesa payments platform for growing businesses.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/industries">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
-                    <path d="M10 6h4" />
-                    <path d="M10 10h4" />
-                    <path d="M10 14h4" />
-                    <path d="M10 18h4" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Industries</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Tailored digital solutions for 18+ industries across Kenya.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/solutions">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-                    <path d="M9 18h6" />
-                    <path d="M10 22h4" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Solutions</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Service + business type packages designed for your niche.</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a className={"flex items-start gap-3 select-none rounded-lg p-3 \x6ceading-none no-underline \x6futline-none transition-colors \x68over:\x62g-accent \x68over:\x74ext-accent-foreground \x66ocus:\x62g-accent focus:text-accent-foreground"} href="/products">
-                <span className={"flex items-center justify-center w-9 h-9 rounded-lg \x62g-primary/\x310 text-primary shrink-0 mt-0.5"}>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                    <path d="M3 6h18" />
-                    <path d="M16 10a4 4 0 0 1-8 0" />
-                  </svg>
-                </span>
-                <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Products</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Ready-made digital products and growth packages.</p>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }
 
 function ImportedSectionCraftingDigitalECommerce() {
+  const [videoPhase, setVideoPhase] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [typedLength, setTypedLength] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+  useEffect(() => {
+    // Typing headline: type a word, hold, delete, move to the next word.
+    if (reducedMotion) return;
+    const word = HERO_WORDS[wordIndex];
+    let delay = deleting ? 45 : 90;
+    if (!deleting && typedLength === word.length) delay = 1500;
+    const timer = window.setTimeout(() => {
+      if (!deleting && typedLength === word.length) setDeleting(true);
+      else if (deleting && typedLength === 0) { setDeleting(false); setWordIndex(index => (index + 1) % HERO_WORDS.length); }
+      else setTypedLength(length => length + (deleting ? -1 : 1));
+    }, delay);
+    return () => window.clearTimeout(timer);
+  }, [typedLength, deleting, wordIndex, reducedMotion]);
+  useEffect(() => {
+    // Source shows the image slide for ~10s, then plays the showreel video until it ends.
+    if (reducedMotion) return;
+    const timer = window.setTimeout(() => setVideoPhase(phase => !phase), videoPhase ? 40000 : 10000);
+    return () => window.clearTimeout(timer);
+  }, [videoPhase, reducedMotion]);
+  const headlineWord = reducedMotion ? HERO_WORDS[0] : HERO_WORDS[wordIndex].slice(0, typedLength);
+  const endVideo = () => setVideoPhase(false);
   return (
     <section className={"w-full h-[600px] \x6dd:\x68-[\x3700px] \x62g-gray-900 text-white [&]:relative [overflow:hidden]"}>
-      <div className={"\x74ransition-opacity \x64uration-700 \x65ase-in-out opacity-100 [&]:absolute [inset:0px] [transition-property:opacity]"}>
+      <div className={`\x74ransition-opacity \x64uration-700 \x65ase-in-out ${videoPhase ? "opacity-0" : "opacity-100"} [&]:absolute [inset:0px] [transition-property:opacity]`}>
         <img className={"[&]:object-cover"} style={{ position: "absolute", height: "100%", width: "100%", inset: "0px", color: "transparent" }} alt="Innovative web design solutions" decoding="async" data-nimg="fill" src="/site-assets/ce629a38b12da765.jpg" />
       </div>
-      <div className={"\x74ransition-opacity \x64uration-700 \x65ase-in-out opacity-0 [&]:absolute [inset:0px] [transition-property:opacity]"} />
-      <div className={"\x62g-gradient-to-br \x66rom-black/\x370 \x76ia-[#\x32b01ef]/\x330 \x74o-black/\x360 \x74ransition-opacity \x64uration-700 opacity-100 [&]:absolute [inset:0px] [transition-property:opacity] [z-index:10]"} />
+      <div className={`\x74ransition-opacity \x64uration-700 \x65ase-in-out ${videoPhase ? "opacity-100" : "opacity-0"} [&]:absolute [inset:0px] [transition-property:opacity]`}>
+        {videoPhase && (
+          <>
+            <video className="absolute inset-0 w-full h-full object-cover hidden md:block" autoPlay muted playsInline onEnded={endVideo} onError={endVideo}><source src={heroDesktopVideo.url} type="video/mp4" /></video>
+            <video className="absolute inset-0 w-full h-full object-cover md:hidden" autoPlay muted playsInline onEnded={endVideo} onError={endVideo}><source src={heroMobileVideo.url} type="video/mp4" /></video>
+          </>
+        )}
+      </div>
+      <div className={"\x62g-gradient-to-br \x66rom-black/\x370 \x76ia-[#\x32b01ef]/\x330 \x74o-black/\x360 \x74ransition-opacity \x64uration-700 ${videoPhase ? "opacity-50" : "opacity-100"} [&]:absolute [inset:0px] [transition-property:opacity] [z-index:10]`} />
       <div className={"\x62g-[\x72adial-gradient(\x65llipse_at_top_right,\x72gba(\x337,\x3150,\x3190,\x30.\x32),\x74ransparent_60%)] [&]:absolute [inset:0px] [z-index:10]"} />
-      <div className={"\x63ontainer \x6dx-auto \x70x-4 flex flex-col items-center justify-center text-center transition-all \x64uration-700 \x65ase-in-out opacity-100 \x73cale-100 [&]:absolute [inset:0px] [width:100%] [z-index:20]"} aria-hidden="false">
+      <div className={"\x63ontainer \x6dx-auto \x70x-4 flex flex-col items-center justify-center text-center transition-all \x64uration-700 \x65ase-in-out ${videoPhase ? "opacity-0 pointer-events-none scale-[0.98]" : "opacity-100 \x73cale-100"} [&]:absolute [inset:0px] [width:100%] [z-index:20]`} aria-hidden={videoPhase ? "true" : "false"}>
         <div className={"flex items-center justify-center gap-2 mb-6 \x61nimate-fade-in-up [&]:flex-wrap"} style={{ transform: "translateY(0px)", opacity: "1" }}>
           <div className={"inline-flex items-center gap-2 \x70x-4 rounded-full \x62order \x62order-white/\x320 \x62g-white/\x310 \x62ackdrop-blur-sm [padding-bottom:0.375rem] [padding-top:0.375rem]"}>
             <svg className={"h-3.5 w-3.5 \x74ext-yellow-400 [color:rgb(250_204_21/var(--tw-text-opacity,1))]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -1584,7 +1659,7 @@ function ImportedSectionCraftingDigitalECommerce() {
             <span className={"\x74ext-xs \x66ont-medium \x74ext-white/\x390 [&]:uppercase [letter-spacing:0.025em]"}>Digitally Fit Awards 2026 Winner</span>
           </a>
         </div>
-        <h1 className={"\x74ext-4xl \x73m:\x74ext-5xl \x6dd:\x74ext-7xl \x66ont-headline \x66ont-bold mb-4 \x61nimate-fade-in-up"} style={{ animationDelay: "0.15s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>Crafting Digital<br /><span className={"\x62g-gradient-to-r \x66rom-white \x76ia-blue-200 \x74o-[#\x32596be] bg-clip-text [color:transparent]"}>E-Commerce</span><span className={"\x61nimate-pulse [color:rgba(255,255,255,0.8)]"}>|</span></h1>
+        <h1 className={"\x74ext-4xl \x73m:\x74ext-5xl \x6dd:\x74ext-7xl \x66ont-headline \x66ont-bold mb-4 \x61nimate-fade-in-up"} style={{ animationDelay: "0.15s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>Crafting Digital<br /><span className={"\x62g-gradient-to-r \x66rom-white \x76ia-blue-200 \x74o-[#\x32596be] bg-clip-text [color:transparent]"}>{headlineWord}</span><span className={"\x61nimate-pulse [color:rgba(255,255,255,0.8)]"}>|</span></h1>
         <p className={"\x74ext-base \x73m:\x74ext-lg mb-8 \x61nimate-fade-in-up [color:rgba(255,255,255,0.75)] [max-width:42rem]"} style={{ animationDelay: "0.3s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>We build bespoke websites and innovative IT solutions that elevate your brand and drive measurable growth.</p>
         <div className={"flex flex-col \x73m:\x66lex-row gap-4 \x61nimate-fade-in-up"} style={{ animationDelay: "0.45s", transform: "translateY(0px)", opacity: "1" } as CSSProperties}>
           <a className={"inline-flex items-center justify-center gap-2 \x74ext-sm \x66ont-medium \x72ing-offset-background transition-colors \x66ocus-visible:\x6futline-none \x66ocus-visible:\x72ing-2 \x66ocus-visible:\x72ing-ring \x66ocus-visible:\x72ing-offset-2 disabled:opacity-50 [&\x5fsvg]:\x73ize-4 \x62g-primary text-primary-foreground \x68over:\x62g-primary/\x390 h-11 rounded-md \x70x-8 group [&]:whitespace-nowrap [&:disabled]:pointer-events-none"} href="/contact">Get a Free Quote<svg className={"ml-2 h-5 w-5 \x74ransition-transform \x67roup-hover:\x74ranslate-x-1 [&]:pointer-events-none [flex-shrink:0]"} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
