@@ -45,7 +45,7 @@ function Index() {
                   event.preventDefault();
                   const [name = "", email = "", subject = "", message = ""] = Array.from(event.currentTarget.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea")).map(field => field.value.trim());
                   const body = `${message}\n\n— ${name}${email ? ` (${email})` : ""}`;
-                  window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject || `Website enquiry from ${name || "a visitor"}`)}&body=${encodeURIComponent(body)}`;
+                  window.open(`mailto:${EMAIL}?subject=${encodeURIComponent(subject || `Website enquiry from ${name || "a visitor"}`)}&body=${encodeURIComponent(body)}`, "_self");
                 }}>
                   <div className={"\x73pace-y-2"}>
                     <label className={"\x74ext-sm \x66ont-medium \x6ceading-none \x70eer-disabled:\x63ursor-not-allowed \x70eer-disabled:\x6fpacity-70"} htmlFor="«r0»-form-item">Full Name</label>

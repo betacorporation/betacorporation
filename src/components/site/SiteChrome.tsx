@@ -183,7 +183,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Domain Registration</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Register .co.ke, .ke, .com and 25+ extensions with hosting and email — — handled for you by our team.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Register .co.ke, .ke, .com and 25+ extensions with hosting and email — handled for you by our team.</p>
                 </div>
               </a>
             </li>
