@@ -31,6 +31,8 @@ use the editor.
 
 ## Imported site
 
-- The homepage is an imported clone of the source site: markup and interactions stay in `src/routes/index.tsx`, retained source CSS in `src/styles/site.css`. Why: the importer and later repairs rely on that layout.
+- Imported pages keep their markup in their own route file (`src/routes/index.tsx` with `src/styles/site.css`; other pages with `src/styles/pages/<slug>.css`). Why: the importer and later repairs rely on that layout.
+- Header, footer and floating widgets (chat, quote popup, ChatGPT button) live once in `src/components/site/SiteChrome.tsx` and every page renders them. Why: one fix or detail change reaches every page.
+- Business contact details (brand, phone, WhatsApp, email, socials) come only from `src/lib/site-contact.ts`. Why: details stay identical across pages.
 - `src/styles/site.css` is unlayered and beats Tailwind's layered utilities, so new markup that conflicts with its base/utility rules uses `!` utilities or inline styles. Why: otherwise spacing, display and colours silently lose.
 - Videos over 10 MB are stored as hosted assets (`src/assets/*.asset.json`) and referenced by their `url`. Why: repository files have a 10 MB limit.
