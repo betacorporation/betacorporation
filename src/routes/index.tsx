@@ -28,6 +28,19 @@ function Index() {
   const menuRoot0 = useRef<Element | null>(null);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  const portfolioScroller = useRef<HTMLDivElement | null>(null);
+  const [portfolioCanLeft, setPortfolioCanLeft] = useState(false);
+  const [portfolioCanRight, setPortfolioCanRight] = useState(true);
+  const updatePortfolioArrows = () => {
+    const el = portfolioScroller.current;
+    if (!el) return;
+    setPortfolioCanLeft(el.scrollLeft > 4);
+    setPortfolioCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+  const scrollPortfolio = (direction: 1 | -1) => {
+    const el = portfolioScroller.current;
+    if (el) el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+  };
   const [chatGptOpen, setChatGptOpen] = useState(false);
   const [chatGptProject, setChatGptProject] = useState("");
   const chatTrigger = useRef<HTMLButtonElement | null>(null);
@@ -810,12 +823,21 @@ function Index() {
                 <p className={"mt-4 \x74ext-lg text-muted-foreground \x6dx-auto [max-width:48rem]"}>We don't just build websites — we craft digital experiences that solve real-world problems and drive business growth.</p>
               </div>
               <div className={"group/carousel [&]:relative"}>
-                <button className={"\x2dtranslate-y-1/\x32 h-10 rounded-full \x62g-white/\x390 \x64ark:\x62g-gray-800/\x390 \x73hadow-lg flex items-center justify-center opacity-0 \x67roup-hover/\x63arousel:\x6fpacity-100 \x74ransition-opacity \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 [&]:absolute [right:0.5rem] [top:50%] [transition-property:opacity] [width:2.5rem] [z-index:10]"} aria-label="Scroll right">
+{portfolioCanLeft && (
+                <button type="button" className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white" aria-label="Scroll left" onClick={() => scrollPortfolio(-1)}>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                </button>
+                )}
+                {portfolioCanRight && (
+                <button className={"\x2dtranslate-y-1/\x32 h-10 rounded-full \x62g-white/\x390 \x64ark:\x62g-gray-800/\x390 \x73hadow-lg flex items-center justify-center opacity-0 \x67roup-hover/\x63arousel:\x6fpacity-100 \x74ransition-opacity \x68over:\x62g-white \x64ark:\x68over:\x62g-gray-700 [&]:absolute [right:0.5rem] [top:50%] [transition-property:opacity] [width:2.5rem] [z-index:10]"} type="button" aria-label="Scroll right" onClick={() => scrollPortfolio(1)}>
                   <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="m9 18 6-6-6-6" />
                   </svg>
                 </button>
-                <div className={"flex \x73nap-mandatory scrollbar-hide [&]:scroll-smooth [gap:1.25rem] [overflow-x:auto] [padding-bottom:1rem] [scroll-snap-type:x_var(--tw-scroll-snap-strictness)]"} style={{ scrollbarWidth: "none" } as CSSProperties}>
+                )}
+                <div className={"flex \x73nap-mandatory scrollbar-hide [&]:scroll-smooth [gap:1.25rem] [overflow-x:auto] [padding-bottom:1rem] [scroll-snap-type:x_var(--tw-scroll-snap-strictness)]"} style={{ scrollbarWidth: "none" } as CSSProperties} ref={portfolioScroller} onScroll={updatePortfolioArrows}>
                   <a className={"shrink-0 w-[280px] \x73m:\x77-[\x3320px] \x6dd:\x77-[\x3350px] [scroll-snap-align:start]"} href="/portfolio/cwpc-kenya-safaris">
                     <div className={"rounded-lg \x62order \x62g-card \x73hadow-sm group glassmorphism transition-all \x64uration-500 \x68over:\x2dtranslate-y-2 \x68over:\x73hadow-xl h-full [animation-duration:0.5s] [color:hsl(var(--card-foreground))] [overflow:hidden]"}>
                       <div className={"flex-col \x73pace-y-1.\x35 \x62g-secondary/\x340 flex items-center justify-center [&]:aspect-square [&]:relative [overflow:hidden] [padding:0px]"}>
