@@ -8,8 +8,8 @@ import { BRAND, CONTACT_PERSON, EMAIL, PHONE_DISPLAY, PHONE_TEL, SITE_URL, SOCIA
 
 const MOBILE_NAV_GROUPS = [
   { title: "Main", links: [{ label: "Home", href: "/" }, { label: "About Us", href: "/about" }, { label: "Partners", href: "/partners" }, { label: "Portfolio", href: "/portfolio" }, { label: "Blog", href: "/blog" }, { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" }] },
-  { title: "Services", links: [{ label: "All Services", href: "/services" }, { label: "Web Development", href: "/services/web-development" }, { label: "Digital Marketing", href: "/services/digital-marketing" }, { label: "Creative Services", href: "/services/btl-media-creative" }, { label: "Print & Publications", href: "/printing" }, { label: "Website Packages", href: "/websites" }, { label: "Domain Registration", href: "https://elitehost.co.ke/" }] },
-  { title: "Products", links: [{ label: "ChamaBox", href: "/chamabox" }, { label: "Beta Hosting", href: "/elitehost" }, { label: "Beta HRIS", href: "/hr-system" }, { label: "Frostwood CRM", href: "/frostwoodcrm" }, { label: "Industries", href: "/industries" }, { label: "Solutions", href: "/solutions" }, { label: "Products", href: "/products" }] },
+  { title: "Services", links: [{ label: "All Services", href: "/services" }, { label: "Web Development", href: "/services/web-development" }, { label: "Digital Marketing", href: "/services/digital-marketing" }, { label: "Creative Services", href: "/services/btl-media-creative" }, { label: "Print & Publications", href: "/printing" }, { label: "Website Packages", href: "/websites" }, { label: "Domain Registration", href: "/elitehost" }] },
+  { title: "Products", links: [{ label: "Beta Chama", href: "/chamabox" }, { label: "Beta Hosting", href: "/elitehost" }, { label: "Beta HRIS", href: "/hr-system" }, { label: "Beta CRM", href: "/frostwoodcrm" }, { label: "Industries", href: "/industries" }, { label: "Solutions", href: "/solutions" }, { label: "Products", href: "/products" }] },
 ];
 
 const CHROME_CSS = `
@@ -207,8 +207,8 @@ export function SiteHeader() {
                   </svg>
                 </span>
                 <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>ChamaBox</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our flagship SaaS for chama and investment group management in Kenya.</p>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta Chama</div>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Chama and investment group management made simple.</p>
                 </div>
               </a>
             </li>
@@ -224,7 +224,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta Hosting</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our sister hosting company — client login, domain search and web hosting.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Domains, fast web hosting and business email.</p>
                 </div>
               </a>
             </li>
@@ -240,7 +240,7 @@ export function SiteHeader() {
                 </span>
                 <div className={"\x73pace-y-1"}>
                   <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta HRIS</div>
-                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>White-label HR system — 14 modules from recruitment to exit. Try the live demo.</p>
+                  <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Complete HR system — from recruitment to exit.</p>
                 </div>
               </a>
             </li>
@@ -263,7 +263,7 @@ export function SiteHeader() {
                   </svg>
                 </span>
                 <div className={"\x73pace-y-1"}>
-                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Frostwood CRM</div>
+                  <div className={"\x74ext-sm \x66ont-medium \x6ceading-none"}>Beta CRM</div>
                   <p className={"\x74ext-xs \x6ceading-snug text-muted-foreground \x6cine-clamp-2"}>Our CRM, invoicing and M-Pesa payments platform for growing businesses.</p>
                 </div>
               </a>
@@ -712,7 +712,7 @@ export function SiteFooter() {
                 <h4 className={"\x66ont-semibold text-white mb-4 \x74ext-sm [&]:uppercase [letter-spacing:0.05em]"}>Resources</h4>
                 <ul className={"\x73pace-y-2.\x35"}>
                   <li>
-                    <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/chamabox">ChamaBox</a>
+                    <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/chamabox">Beta Chama</a>
                   </li>
                   <li>
                     <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/elitehost">Beta Hosting</a>
@@ -721,7 +721,7 @@ export function SiteFooter() {
                     <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/hr-system">Beta HRIS</a>
                   </li>
                   <li>
-                    <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/frostwoodcrm">Frostwood CRM</a>
+                    <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/frostwoodcrm">Beta CRM</a>
                   </li>
                   <li>
                     <a className={"\x74ext-sm text-gray-400 \x68over:\x74ext-white transition-colors \x64uration-200 \x68over:\x74ranslate-x-0.\x35 inline-block [animation-duration:0.2s]"} href="/industries">Industries</a>

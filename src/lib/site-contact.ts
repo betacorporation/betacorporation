@@ -18,3 +18,8 @@ export const SOCIALS: SocialLink[] = [
   { network: "Facebook", handle: "Jøsh Lêê", href: "https://www.facebook.com/search/top?q=J%C3%B8sh%20L%C3%AA%C3%AA" },
   { network: "LinkedIn", handle: "Coming soon", href: null },
 ];
+
+/** WhatsApp chat link with a ready-written opening message. */
+export function whatsappLink(message: string) {
+  return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
+}

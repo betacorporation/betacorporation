@@ -11,9 +11,28 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as ChamaboxRouteImport } from './routes/chamabox'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ElitehostRouteImport } from './routes/elitehost'
+import { Route as FrostwoodcrmRouteImport } from './routes/frostwoodcrm'
+import { Route as HrSystemRouteImport } from './routes/hr-system'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrintingRouteImport } from './routes/printing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WebsitesRouteImport } from './routes/websites'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as PortfolioSlugRouteImport } from './routes/portfolio_.$slug'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesCategoryIndexRouteImport } from './routes/services.$category.index'
+import { Route as ServicesCategoryServiceRouteImport } from './routes/services.$category.$service'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,9 +44,44 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChamaboxRoute = ChamaboxRouteImport.update({
+  id: '/chamabox',
+  path: '/chamabox',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElitehostRoute = ElitehostRouteImport.update({
+  id: '/elitehost',
+  path: '/elitehost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrostwoodcrmRoute = FrostwoodcrmRouteImport.update({
+  id: '/frostwoodcrm',
+  path: '/frostwoodcrm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrSystemRoute = HrSystemRouteImport.update({
+  id: '/hr-system',
+  path: '/hr-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -40,43 +94,252 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrintingRoute = PrintingRouteImport.update({
+  id: '/printing',
+  path: '/printing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsitesRoute = WebsitesRouteImport.update({
+  id: '/websites',
+  path: '/websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
+  id: '/portfolio_/$slug',
+  path: '/portfolio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCategoryIndexRoute = ServicesCategoryIndexRouteImport.update({
+  id: '/services/$category/',
+  path: '/services/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCategoryServiceRoute = ServicesCategoryServiceRouteImport.update({
+  id: '/services/$category/$service',
+  path: '/services/$category/$service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
+  '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
+  '/products': typeof ProductsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
+  '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/services/$category/$service': typeof ServicesCategoryServiceRoute
+  '/services/$category/': typeof ServicesCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
+  '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
+  '/products': typeof ProductsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
+  '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/services': typeof ServicesIndexRoute
+  '/services/$category/$service': typeof ServicesCategoryServiceRoute
+  '/services/$category': typeof ServicesCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
+  '/elitehost': typeof ElitehostRoute
+  '/frostwoodcrm': typeof FrostwoodcrmRoute
+  '/hr-system': typeof HrSystemRoute
+  '/industries': typeof IndustriesRoute
+  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
+  '/products': typeof ProductsRoute
+  '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
+  '/websites': typeof WebsitesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/portfolio_/$slug': typeof PortfolioSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/services/$category/$service': typeof ServicesCategoryServiceRoute
+  '/services/$category/': typeof ServicesCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/portfolio' | '/pricing'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/account'
+    | '/chamabox'
+    | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
+    | '/industries'
+    | '/partners'
+    | '/portfolio'
+    | '/pricing'
+    | '/printing'
+    | '/privacy'
+    | '/products'
+    | '/solutions'
+    | '/terms'
+    | '/websites'
+    | '/blog/$slug'
+    | '/portfolio/$slug'
+    | '/blog/'
+    | '/services/'
+    | '/services/$category/$service'
+    | '/services/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/portfolio' | '/pricing'
-  id: '__root__' | '/' | '/about' | '/contact' | '/portfolio' | '/pricing'
+  to:
+    | '/'
+    | '/about'
+    | '/account'
+    | '/chamabox'
+    | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
+    | '/industries'
+    | '/partners'
+    | '/portfolio'
+    | '/pricing'
+    | '/printing'
+    | '/privacy'
+    | '/products'
+    | '/solutions'
+    | '/terms'
+    | '/websites'
+    | '/blog/$slug'
+    | '/portfolio/$slug'
+    | '/blog'
+    | '/services'
+    | '/services/$category/$service'
+    | '/services/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/account'
+    | '/chamabox'
+    | '/contact'
+    | '/elitehost'
+    | '/frostwoodcrm'
+    | '/hr-system'
+    | '/industries'
+    | '/partners'
+    | '/portfolio'
+    | '/pricing'
+    | '/printing'
+    | '/privacy'
+    | '/products'
+    | '/solutions'
+    | '/terms'
+    | '/websites'
+    | '/blog/$slug'
+    | '/portfolio_/$slug'
+    | '/blog/'
+    | '/services/'
+    | '/services/$category/$service'
+    | '/services/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRoute
+  ChamaboxRoute: typeof ChamaboxRoute
   ContactRoute: typeof ContactRoute
+  ElitehostRoute: typeof ElitehostRoute
+  FrostwoodcrmRoute: typeof FrostwoodcrmRoute
+  HrSystemRoute: typeof HrSystemRoute
+  IndustriesRoute: typeof IndustriesRoute
+  PartnersRoute: typeof PartnersRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
+  PrintingRoute: typeof PrintingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProductsRoute: typeof ProductsRoute
+  SolutionsRoute: typeof SolutionsRoute
+  TermsRoute: typeof TermsRoute
+  WebsitesRoute: typeof WebsitesRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  PortfolioSlugRoute: typeof PortfolioSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+  ServicesCategoryServiceRoute: typeof ServicesCategoryServiceRoute
+  ServicesCategoryIndexRoute: typeof ServicesCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,11 +358,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chamabox': {
+      id: '/chamabox'
+      path: '/chamabox'
+      fullPath: '/chamabox'
+      preLoaderRoute: typeof ChamaboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/elitehost': {
+      id: '/elitehost'
+      path: '/elitehost'
+      fullPath: '/elitehost'
+      preLoaderRoute: typeof ElitehostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frostwoodcrm': {
+      id: '/frostwoodcrm'
+      path: '/frostwoodcrm'
+      fullPath: '/frostwoodcrm'
+      preLoaderRoute: typeof FrostwoodcrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-system': {
+      id: '/hr-system'
+      path: '/hr-system'
+      fullPath: '/hr-system'
+      preLoaderRoute: typeof HrSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -116,15 +428,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/printing': {
+      id: '/printing'
+      path: '/printing'
+      fullPath: '/printing'
+      preLoaderRoute: typeof PrintingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/websites': {
+      id: '/websites'
+      path: '/websites'
+      fullPath: '/websites'
+      preLoaderRoute: typeof WebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio_/$slug': {
+      id: '/portfolio_/$slug'
+      path: '/portfolio/$slug'
+      fullPath: '/portfolio/$slug'
+      preLoaderRoute: typeof PortfolioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$category/': {
+      id: '/services/$category/'
+      path: '/services/$category'
+      fullPath: '/services/$category/'
+      preLoaderRoute: typeof ServicesCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$category/$service': {
+      id: '/services/$category/$service'
+      path: '/services/$category/$service'
+      fullPath: '/services/$category/$service'
+      preLoaderRoute: typeof ServicesCategoryServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRoute,
+  ChamaboxRoute: ChamaboxRoute,
   ContactRoute: ContactRoute,
+  ElitehostRoute: ElitehostRoute,
+  FrostwoodcrmRoute: FrostwoodcrmRoute,
+  HrSystemRoute: HrSystemRoute,
+  IndustriesRoute: IndustriesRoute,
+  PartnersRoute: PartnersRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
+  PrintingRoute: PrintingRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProductsRoute: ProductsRoute,
+  SolutionsRoute: SolutionsRoute,
+  TermsRoute: TermsRoute,
+  WebsitesRoute: WebsitesRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  PortfolioSlugRoute: PortfolioSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+  ServicesCategoryServiceRoute: ServicesCategoryServiceRoute,
+  ServicesCategoryIndexRoute: ServicesCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
