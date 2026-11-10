@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Imported site
+
+- The homepage is an imported clone of the source site: markup and interactions stay in `src/routes/index.tsx`, retained source CSS in `src/styles/site.css`. Why: the importer and later repairs rely on that layout.
+- `src/styles/site.css` is unlayered and beats Tailwind's layered utilities, so new markup that conflicts with its base/utility rules uses `!` utilities or inline styles. Why: otherwise spacing, display and colours silently lose.
+- Videos over 10 MB are stored as hosted assets (`src/assets/*.asset.json`) and referenced by their `url`. Why: repository files have a 10 MB limit.

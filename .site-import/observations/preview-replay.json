@@ -1,0 +1,108 @@
+[
+ {
+  "check": "no popup on load",
+  "ok": true
+ },
+ {
+  "check": "desktop Services hover",
+  "expanded": "true",
+  "links": [
+   "Print & Publications -> /printing",
+   "Web Development -> /services/web-development",
+   "Digital Marketing -> /services/digital-marketing",
+   "Creative Services -> /services/btl-media-creative",
+   "Domain Registration -> https://elitehost.co.ke/",
+   "Explore All Services -> /services"
+  ]
+ },
+ {
+  "check": "desktop Services closes on leave",
+  "ok": true
+ },
+ {
+  "check": "desktop Products hover",
+  "expanded": "true",
+  "links": [
+   "ChamaBox -> /chamabox",
+   "EliteHost -> /elitehost",
+   "Elite HRIS -> /hr-system",
+   "Frostwood CRM -> /frostwoodcrm",
+   "Industries -> /industries",
+   "Solutions -> /solutions",
+   "Products -> /products"
+  ]
+ },
+ {
+  "check": "desktop Products closes on leave",
+  "ok": true
+ },
+ {
+  "check": "hero typing",
+  "samples": [
+   "Brand Identity|",
+   "Brand Identi|",
+   "Brand I|",
+   "Brand |",
+   "Br|",
+   "Digital Marketing|",
+   "Digital Marketin|",
+   "Digita|",
+   "SEO Strategy|",
+   "SEO St|",
+   "S|"
+  ]
+ },
+ {
+  "check": "hero video plays",
+  "result": {
+   "a": 7.288351,
+   "b": 8.788457,
+   "ready": 4,
+   "src": "-4517-b4ba-5aeca6177247/hero-desktop.mp4",
+   "n": 2
+  }
+ },
+ {
+  "check": "popup auto-opens ~25s",
+  "ok": true
+ },
+ {
+  "check": "popup Escape closes",
+  "ok": true
+ },
+ {
+  "check": "header Get a Quote",
+  "href": "/contact"
+ },
+ {
+  "check": "hero CTAs",
+  "links": [
+   "DIGITALLY FIT AWARDS 2026 WINNER -> #awards",
+   "Get a Free Quote -> /contact",
+   "View Our Work -> /portfolio"
+  ]
+ },
+ {
+  "check": "page errors",
+  "errs": []
+ },
+ {
+  "check": "phone menu opens",
+  "visible": true,
+  "expanded": "true",
+  "text": "Navigation Menu  MAIN  Home About Us Partners Portfolio Blog Pricing Contact  SERVICES  All Services Web Development Digital Marketing Creative Services Print & Publications Website Packages Domain Re"
+ },
+ {
+  "check": "phone menu Escape closes",
+  "ok": true,
+  "focus": "Open menu"
+ },
+ {
+  "check": "phone menu close button",
+  "ok": true
+ },
+ {
+  "check": "phone menu link About Us",
+  "url": "http://localhost:8080/about"
+ }
+]
