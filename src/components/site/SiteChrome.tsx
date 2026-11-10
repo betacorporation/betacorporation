@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
 import { BRAND, CONTACT_PERSON, EMAIL, PHONE_DISPLAY, PHONE_TEL, SITE_URL, SOCIALS, WHATSAPP_URL, type SocialNetwork } from "@/lib/site-contact";
