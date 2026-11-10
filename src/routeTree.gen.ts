@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PortfolioSlugRouteImport } from './routes/portfolio_.$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesCategoryIndexRouteImport } from './routes/services.$category.index'
 import { Route as ServicesCategoryServiceRouteImport } from './routes/services.$category.$service'
@@ -43,6 +44,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
+  id: '/portfolio_/$slug',
+  path: '/portfolio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category/': typeof ServicesCategoryIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category': typeof ServicesCategoryIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
+  '/portfolio_/$slug': typeof PortfolioSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$category/$service': typeof ServicesCategoryServiceRoute
   '/services/$category/': typeof ServicesCategoryIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/portfolio/$slug'
     | '/services/'
     | '/services/$category/$service'
     | '/services/$category/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/portfolio/$slug'
     | '/services'
     | '/services/$category/$service'
     | '/services/$category'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/pricing'
+    | '/portfolio_/$slug'
     | '/services/'
     | '/services/$category/$service'
     | '/services/$category/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
+  PortfolioSlugRoute: typeof PortfolioSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ServicesCategoryServiceRoute: typeof ServicesCategoryServiceRoute
   ServicesCategoryIndexRoute: typeof ServicesCategoryIndexRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio_/$slug': {
+      id: '/portfolio_/$slug'
+      path: '/portfolio/$slug'
+      fullPath: '/portfolio/$slug'
+      preLoaderRoute: typeof PortfolioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
+  PortfolioSlugRoute: PortfolioSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ServicesCategoryServiceRoute: ServicesCategoryServiceRoute,
   ServicesCategoryIndexRoute: ServicesCategoryIndexRoute,
