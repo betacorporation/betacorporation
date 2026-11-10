@@ -109,7 +109,7 @@ function Index() {
                 </div>
                 <div className={"left-0 flex justify-center [&]:absolute [top:100%]"}>
                   {openMenu0 && (
-                    <div data-state="open" data-orientation="horizontal" className="origin-top-center relative mt-1.5 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg animate-in zoom-in-90" style={{ width: "520px", height: openMenu0 === "observed-0" ? "478px" : "566px" }}>
+                    <div data-state="open" data-orientation="horizontal" className="origin-top-center relative mt-1.5 overflow-hidden rounded-md border bg-[hsl(var(--popover))] text-[hsl(var(--popover-foreground))] shadow-lg animate-in zoom-in-90" style={{ width: "520px", height: openMenu0 === "observed-0" ? "478px" : "566px" }}>
       <div className={"left-0 top-0 w-full \x64ata-[\x6dotion^=\x66rom-]:\x61nimate-in \x64ata-[\x6dotion^=\x74o-]:\x61nimate-out \x64ata-[\x6dotion^=\x66rom-]:\x66ade-in \x64ata-[\x6dotion^=\x74o-]:\x66ade-out \x64ata-[\x6dotion=\x66rom-end]:\x73lide-in-from-right-52 \x64ata-[\x6dotion=\x66rom-start]:\x73lide-in-from-left-52 \x64ata-[\x6dotion=\x74o-end]:\x73lide-out-to-right-52 \x64ata-[\x6dotion=\x74o-start]:\x73lide-out-to-left-52 \x6dd:\x61bsolute \x6dd:\x77-auto"} aria-hidden={openMenu0 === "observed-0" ? undefined : (undefined)} data-state={openMenu0 === "observed-0" ? undefined : (undefined)} hidden={openMenu0 === "observed-0" ? undefined : (true)} inert={openMenu0 === "observed-0" ? undefined : (false)} {...{ open: (openMenu0 === "observed-0" ? undefined : (false)) ? "" : undefined }} style={openMenu0 === "observed-0" ? {} : ({ display: "none" })} id="radix-«R12db»-content-radix-«Rn2db»" aria-labelledby="radix-«R12db»-trigger-radix-«Rn2db»" dir="ltr" data-site-import-observed-popup="">
         <div className="w-[520px] p-4">
           <ul className="grid grid-cols-1 gap-2">
@@ -1633,7 +1633,7 @@ function ImportedSectionCraftingDigitalECommerce() {
         {videoPhase && (
           <>
             <video className="absolute inset-0 w-full h-full object-cover max-md:hidden" autoPlay muted playsInline onEnded={endVideo} onError={endVideo}><source src={heroDesktopVideo.url} type="video/mp4" /></video>
-            <video className="absolute inset-0 w-full h-full object-cover md:hidden" autoPlay muted playsInline onEnded={endVideo} onError={endVideo}><source src={heroMobileVideo.url} type="video/mp4" /></video>
+            <video className="absolute inset-0 w-full h-full object-cover md:hidden!" autoPlay muted playsInline onEnded={endVideo} onError={endVideo}><source src={heroMobileVideo.url} type="video/mp4" /></video>
           </>
         )}
       </div>
