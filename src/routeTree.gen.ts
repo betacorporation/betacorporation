@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as ChamaboxRouteImport } from './routes/chamabox'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ElitehostRouteImport } from './routes/elitehost'
@@ -21,8 +22,10 @@ import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrintingRouteImport } from './routes/printing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WebsitesRouteImport } from './routes/websites'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -39,6 +42,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChamaboxRoute = ChamaboxRouteImport.update({
@@ -91,6 +99,11 @@ const PrintingRoute = PrintingRouteImport.update({
   path: '/printing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -99,6 +112,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WebsitesRoute = WebsitesRouteImport.update({
@@ -140,6 +158,7 @@ const ServicesCategoryServiceRoute = ServicesCategoryServiceRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
   '/elitehost': typeof ElitehostRoute
@@ -150,8 +169,10 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
@@ -163,6 +184,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
   '/elitehost': typeof ElitehostRoute
@@ -173,8 +195,10 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
@@ -187,6 +211,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
   '/chamabox': typeof ChamaboxRoute
   '/contact': typeof ContactRoute
   '/elitehost': typeof ElitehostRoute
@@ -197,8 +222,10 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/printing': typeof PrintingRoute
+  '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/solutions': typeof SolutionsRoute
+  '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio_/$slug': typeof PortfolioSlugRoute
@@ -212,6 +239,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/account'
     | '/chamabox'
     | '/contact'
     | '/elitehost'
@@ -222,8 +250,10 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/privacy'
     | '/products'
     | '/solutions'
+    | '/terms'
     | '/websites'
     | '/blog/$slug'
     | '/portfolio/$slug'
@@ -235,6 +265,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/account'
     | '/chamabox'
     | '/contact'
     | '/elitehost'
@@ -245,8 +276,10 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/privacy'
     | '/products'
     | '/solutions'
+    | '/terms'
     | '/websites'
     | '/blog/$slug'
     | '/portfolio/$slug'
@@ -258,6 +291,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/account'
     | '/chamabox'
     | '/contact'
     | '/elitehost'
@@ -268,8 +302,10 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/printing'
+    | '/privacy'
     | '/products'
     | '/solutions'
+    | '/terms'
     | '/websites'
     | '/blog/$slug'
     | '/portfolio_/$slug'
@@ -282,6 +318,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRoute
   ChamaboxRoute: typeof ChamaboxRoute
   ContactRoute: typeof ContactRoute
   ElitehostRoute: typeof ElitehostRoute
@@ -292,8 +329,10 @@ export interface RootRouteChildren {
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
   PrintingRoute: typeof PrintingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
   SolutionsRoute: typeof SolutionsRoute
+  TermsRoute: typeof TermsRoute
   WebsitesRoute: typeof WebsitesRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
@@ -317,6 +356,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chamabox': {
@@ -389,6 +435,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrintingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -401,6 +454,13 @@ declare module '@tanstack/react-router' {
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/websites': {
@@ -458,6 +518,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRoute,
   ChamaboxRoute: ChamaboxRoute,
   ContactRoute: ContactRoute,
   ElitehostRoute: ElitehostRoute,
@@ -468,8 +529,10 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
   PrintingRoute: PrintingRoute,
+  PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
   SolutionsRoute: SolutionsRoute,
+  TermsRoute: TermsRoute,
   WebsitesRoute: WebsitesRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
