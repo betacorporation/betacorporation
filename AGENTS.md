@@ -36,3 +36,4 @@ use the editor.
 - Business contact details (brand, phone, WhatsApp, email, socials) come only from `src/lib/site-contact.ts`. Why: details stay identical across pages.
 - `src/styles/site.css` is unlayered and beats Tailwind's layered utilities, so new markup that conflicts with its base/utility rules uses `!` utilities or inline styles. Why: otherwise spacing, display and colours silently lose.
 - Videos over 10 MB are stored as hosted assets (`src/assets/*.asset.json`) and referenced by their `url`. Why: repository files have a 10 MB limit.
+- Pages not captured from the source site are built from `src/components/site/PageBlocks.tsx` with their copy/data in `src/lib/content/*`. Why: they keep the imported look while staying easy to edit.
