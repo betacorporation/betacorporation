@@ -27,7 +27,7 @@ function PostPage() {
       <article className="py-12 md:py-16">
         <div className={`${CONTAINER} max-w-3xl`}>
           <a className={`mb-6 inline-flex items-center gap-2 text-sm font-semibold ${TEXT_PRIMARY} hover:underline`} href="/blog"><ArrowLeft className="h-4 w-4" aria-hidden="true" />All articles</a>
-          <span className="block text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent))]">{post.category}</span>
+          <span className="block text-xs font-semibold uppercase tracking-wider !text-[hsl(var(--accent))]">{post.category}</span>
           <h1 className={`mt-2 text-3xl md:text-4xl font-bold leading-tight ${TEXT_PRIMARY}`}>{post.title}</h1>
           <p className={`mt-3 text-sm ${TEXT_MUTED}`}>{formatPostDate(post.date)} · {post.readMinutes} min read</p>
           <div className="mt-8 space-y-8">

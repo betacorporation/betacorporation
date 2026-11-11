@@ -25,7 +25,7 @@ function WebsitesPage() {
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Package categories">
             {(["All", ...WEBSITE_GROUPS] as const).map(name => (
               <button key={name} type="button" role="tab" aria-selected={group === name} onClick={() => setGroup(name)}
-                className={`${TAB} ${group === name ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{name}</button>
+                className={`${TAB} ${group === name ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] !text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{name}</button>
             ))}
           </div>
           <label className="relative block md:w-72">
@@ -38,7 +38,7 @@ function WebsitesPage() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map(pkg => (
             <div key={pkg.name} className={`${CARD} flex flex-col p-6 transition-all hover:-translate-y-1 hover:shadow-lg`}>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent))]">{pkg.group}</span>
+              <span className="text-xs font-semibold uppercase tracking-wider !text-[hsl(var(--accent))]">{pkg.group}</span>
               <h3 className="mt-2 text-lg font-semibold">{pkg.name}</h3>
               <p className={`mt-3 text-sm ${TEXT_MUTED}`}>From</p>
               <p className={`text-3xl font-bold ${TEXT_PRIMARY}`}>{formatKes(pkg.price)}</p>

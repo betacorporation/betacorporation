@@ -15,7 +15,7 @@ function AccountPage() {
       <section className="py-16 md:py-20">
         <div className={`${CONTAINER} max-w-3xl`}>
           <div className={`${CARD} p-8 text-center md:p-12`}>
-            <span className="inline-block rounded-full bg-[hsl(var(--accent)/0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent))]">Coming soon</span>
+            <span className="inline-block rounded-full bg-[hsl(var(--accent)/0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-wider !text-[hsl(var(--accent))]">Coming soon</span>
             <h1 className={`mt-4 text-3xl md:text-4xl font-bold ${TEXT_PRIMARY}`}>Client Account</h1>
             <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXT_SOFT}`}>Online client accounts are on the way. Until then, our team handles project updates, invoices and support directly — just get in touch.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

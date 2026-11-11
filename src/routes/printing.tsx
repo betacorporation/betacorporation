@@ -80,7 +80,7 @@ function PrintingPage() {
               <div className="mt-2 flex flex-wrap gap-2">
                 {QUANTITIES.map(quantity => (
                   <button key={quantity} type="button" aria-pressed={spec.copies === quantity} onClick={() => update("copies", quantity)}
-                    className={`rounded-md border px-4 py-2 text-sm font-medium ${spec.copies === quantity ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{quantity}</button>
+                    className={`rounded-md border px-4 py-2 text-sm font-medium ${spec.copies === quantity ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] !text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{quantity}</button>
                 ))}
                 <input aria-label="Custom number of copies" className={`${FIELD} w-28`} type="number" min={25} value={spec.copies} onChange={event => update("copies", Math.max(25, Number(event.target.value) || 25))} />
               </div>

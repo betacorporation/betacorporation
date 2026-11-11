@@ -17,7 +17,7 @@ function BlogPage() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {BLOG_POSTS.map(post => (
             <a key={post.slug} href={`/blog/${post.slug}`} className={`${CARD} group flex flex-col p-6 transition-all hover:-translate-y-1 hover:shadow-lg`}>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent))]">{post.category}</span>
+              <span className="text-xs font-semibold uppercase tracking-wider !text-[hsl(var(--accent))]">{post.category}</span>
               <h2 className={`mt-2 text-xl font-semibold ${TEXT_PRIMARY} group-hover:underline`}>{post.title}</h2>
               <p className={`mt-3 flex-grow text-sm leading-relaxed ${TEXT_SOFT}`}>{post.excerpt}</p>
               <div className={`mt-5 flex items-center justify-between text-xs ${TEXT_MUTED}`}>
