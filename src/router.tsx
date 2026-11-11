@@ -12,6 +12,8 @@ export const getRouter = () => {
     scrollRestoration: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.
     defaultPreloadStaleTime: 0,
+    // GitHub Pages serves each page as /path/ — keep the slash there instead of redirecting.
+    ...(import.meta.env.VITE_GITHUB_PAGES === "true" ? { trailingSlash: "preserve" as const } : {}),
   });
 
   return router;
