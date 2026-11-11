@@ -7,12 +7,25 @@
 // the build fails. Never add compression (compressPublicAssets, vite-plugin-compression):
 // hosting already compresses at the edge.
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+import { existsSync, readFileSync } from "node:fs";
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+// GitHub Pages export: only when GITHUB_PAGES=true (see .github/workflows/github-pages.yml).
+// Normal Lovable builds are unaffected.
+const githubPages = process.env.GITHUB_PAGES === "true";
+const pagesFile = ".github-pages-paths.json";
+const pagePaths: string[] = githubPages && existsSync(pagesFile) ? JSON.parse(readFileSync(pagesFile, "utf8")) : [];
 
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(githubPages
+      ? {
+          pages: pagePaths.map(path => ({ path })),
+          prerender: { enabled: true, autoStaticPathsDiscovery: false, failOnError: true },
+        }
+      : {}),
   },
 });
