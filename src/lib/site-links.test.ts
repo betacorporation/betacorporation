@@ -4,7 +4,7 @@ import { PORTFOLIO_PROJECTS } from "@/lib/content/portfolio";
 import { SERVICE_CATEGORIES } from "@/lib/content/services";
 
 const routeTree = readFileSync("src/routeTree.gen.ts", "utf8");
-const staticPaths = new Set([...routeTree.matchAll(/fullPath: '([^']+)'/g)].map(match => match[1].replace(/\/$/, "") || "/"));
+const staticPaths = new Set([...routeTree.matchAll(/fullPath: '([^']+)'/g)].map(match => (match[1] ?? "").replace(/\/$/, "") || "/"));
 
 function resolves(path: string) {
   if (staticPaths.has(path)) return true;
@@ -21,14 +21,14 @@ function resolves(path: string) {
 describe("site links", () => {
   it("every menu and footer link opens a real page", () => {
     const chrome = readFileSync("src/components/site/SiteChrome.tsx", "utf8");
-    const links = [...chrome.matchAll(/href[=:] ?\{?"(\/[^"#?]*)"/g)].map(match => match[1]).filter(path => path !== "/favicon.png" && !path.startsWith("/site-assets"));
+    const links = [...chrome.matchAll(/href[=:] ?\{?"(\/[^"#?]*)"/g)].map(match => match[1] ?? "").filter(path => path !== "" && path !== "/favicon.png" && !path.startsWith("/site-assets"));
     expect(links.length).toBeGreaterThan(10);
     expect(links.filter(path => !resolves(path))).toEqual([]);
   });
 
   it("every portfolio card links to an existing case study", () => {
     const portfolio = readFileSync("src/routes/portfolio.tsx", "utf8");
-    const slugs = [...portfolio.matchAll(/href="\/portfolio\/([^"]+)"/g)].map(match => match[1]);
+    const slugs = [...portfolio.matchAll(/href="\/portfolio\/([^"]+)"/g)].map(match => match[1] ?? "").filter(Boolean);
     expect(slugs.length).toBeGreaterThan(0);
     expect(slugs.filter(slug => !resolves(`/portfolio/${slug}`))).toEqual([]);
   });
