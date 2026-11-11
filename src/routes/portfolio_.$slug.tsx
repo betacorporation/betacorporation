@@ -32,7 +32,7 @@ function ProjectPage() {
           <a className={`mb-6 inline-flex items-center gap-2 text-sm font-semibold ${TEXT_PRIMARY} hover:underline`} href="/portfolio"><ArrowLeft className="h-4 w-4" aria-hidden="true" />Back to all projects</a>
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <span className="inline-block rounded-full bg-[hsl(var(--accent))] px-3 py-1.5 text-xs font-semibold text-[hsl(var(--accent-foreground))] shadow-md">{project.category}</span>
+              <span className="inline-block rounded-full bg-[hsl(var(--accent))] px-3 py-1.5 text-xs font-semibold !text-[hsl(var(--accent-foreground))] shadow-md">{project.category}</span>
               <h1 className={`mt-4 text-4xl md:text-5xl font-bold ${TEXT_PRIMARY}`}>{project.title}</h1>
               <p className={`mt-4 text-lg ${TEXT_SOFT}`}>{project.problem}</p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -71,7 +71,7 @@ function ProjectPage() {
                 {item.image && <img className="absolute inset-0 h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105" src={item.image} alt={`Screenshot of the ${item.title} project`} loading="lazy" />}
               </div>
               <div className="p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent))]">{item.category}</span>
+                <span className="text-xs font-semibold uppercase tracking-wider !text-[hsl(var(--accent))]">{item.category}</span>
                 <h3 className={`mt-1 text-lg font-semibold ${TEXT_PRIMARY}`}>{item.title}</h3>
               </div>
             </a>
