@@ -25,7 +25,7 @@ function WebsitesPage() {
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Package categories">
             {(["All", ...WEBSITE_GROUPS] as const).map(name => (
               <button key={name} type="button" role="tab" aria-selected={group === name} onClick={() => setGroup(name)}
-                className={`${TAB} ${group === name ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] !text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{name}</button>
+                className={`${TAB} ${group === name ? "!border-[hsl(var(--primary))] !bg-[hsl(var(--primary))] !text-[hsl(var(--primary-foreground))]" : "border-[hsl(var(--border))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--primary)/0.05)]"}`}>{name}</button>
             ))}
           </div>
           <label className="relative block md:w-72">
