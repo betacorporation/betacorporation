@@ -42,3 +42,8 @@ use the editor.
 
 - The site is also published to GitHub Pages by `.github/workflows/github-pages.yml`: `GITHUB_PAGES=true` turns on prerendering of every URL from `src/lib/static-pages.ts` (new routes or content collections must be added there). Why: GitHub Pages serves only plain files, and normal Lovable builds must stay unchanged.
 - The export assumes the site lives at the domain root (`<user>.github.io` repo) and uses `trailingSlash: "preserve"` only when `VITE_GITHUB_PAGES=true`. Why: markup uses root-relative `/site-assets` paths and Pages serves pages as `/path/`.
+
+## Sitemap
+
+- `/sitemap.xml` is built from each route's required `staticData.sitemap` plus the portfolio, blog and service lists; new content collections must be added to its handler and to `src/lib/static-pages.ts`. Why: both the Lovable site and the GitHub Pages export list every page from the same source.
+- The sitemap address comes from `SITE_URL` (set by the GitHub Pages workflow, which also rewrites the `Sitemap:` line in robots.txt) and falls back to the Lovable URL. Why: each host must list its own addresses.
