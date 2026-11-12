@@ -6,7 +6,7 @@ import { WHATSAPP_URL } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/services/")({
   head: () => pageHead("Our Services | Beta Corporation", "Web design, eCommerce, digital marketing, branding and printing services from Beta Corporation in Kenya."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: ServicesPage,
 });
 

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/portfolio")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  staticData: { importedDocument: { html: { "className": "__variable_b021ee __variable_f166df", "lang": "en" }, body: { "className": "\x66ont-body \x61ntialiased \x66lex \x66lex-col \x6din-h-screen \x62g-background \x74ext-foreground", "data-site-import-responsive-incomplete": "scroll" } } },
+  staticData: { sitemap: true, importedDocument: { html: { "className": "__variable_b021ee __variable_f166df", "lang": "en" }, body: { "className": "\x66ont-body \x61ntialiased \x66lex \x66lex-col \x6din-h-screen \x62g-background \x74ext-foreground", "data-site-import-responsive-incomplete": "scroll" } } },
   component: Index,
 });
 

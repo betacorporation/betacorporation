@@ -6,7 +6,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/industries")({
   head: () => pageHead("Industries We Serve | Beta Corporation", "Website design, digital marketing and branding for hotels, real estate, schools, healthcare, retail, NGOs and more in Kenya."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: IndustriesPage,
 });
 

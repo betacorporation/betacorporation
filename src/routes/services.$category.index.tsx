@@ -14,7 +14,7 @@ export const Route = createFileRoute("/services/$category/")({
     const category = loaderData ? findCategory(loaderData.slug) : undefined;
     return category ? pageHead(`${category.title} Services | Beta Corporation`, category.intro) : { meta: [{ title: "Service unavailable | Beta Corporation" }, { name: "robots", content: "noindex" }] };
   },
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: CategoryPage,
   notFoundComponent: () => <MissingPage title="Service not found" text="We couldn't find that service category." backHref="/services" backLabel="See all services" />,
   errorComponent: (props: ErrorComponentProps) => <PageError {...props} />,

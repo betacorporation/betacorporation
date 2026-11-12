@@ -5,7 +5,7 @@ import { BRAND, EMAIL, PHONE_DISPLAY } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/privacy")({
   head: () => pageHead("Privacy Policy | Beta Corporation", "How Beta Corporation collects, uses and protects your personal information, in line with Kenya's Data Protection Act."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: PrivacyPage,
 });
 

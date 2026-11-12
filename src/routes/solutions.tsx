@@ -5,7 +5,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/solutions")({
   head: () => pageHead("Solutions by Business Type | Beta Corporation", "Tailored website, marketing and branding solutions for churches, schools, clinics, hotels, shops and more across Kenya."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: SolutionsPage,
 });
 
