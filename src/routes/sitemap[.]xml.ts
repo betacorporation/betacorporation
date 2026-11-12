@@ -21,12 +21,12 @@ export const Route = createFileRoute("/sitemap.xml")({
         const router = await getRouterInstance();
         const entries: SitemapEntry[] = sitemapStaticPaths(router).map(path => ({ path }));
 
-        const addDynamic = (routeId: string, to: string, items: { params: Record<string, string>; lastmod?: string }[]) => {
+        const addDynamic = (routeId: keyof typeof router.routesById, to: string, items: { params: Record<string, string>; lastmod?: string }[]) => {
           if (!isSitemapRouteIncluded(router.routesById[routeId])) return;
           for (const item of items) {
             const location = router.buildLocation({ to, params: item.params, search: () => ({}), hash: "" } as never);
             const path = sitemapPathForLocation(router, location, routeId);
-            if (path) entries.push({ path, lastmod: item.lastmod });
+            if (path) entries.push(item.lastmod ? { path, lastmod: item.lastmod } : { path });
           }
         };
         addDynamic("/portfolio_/$slug", "/portfolio/$slug", PORTFOLIO_PROJECTS.map(project => ({ params: { slug: project.slug } })));
