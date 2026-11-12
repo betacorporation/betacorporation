@@ -37,3 +37,8 @@ use the editor.
 - `src/styles/site.css` is unlayered and beats Tailwind's layered utilities, so new markup that conflicts with its base/utility rules uses `!` utilities or inline styles. Why: otherwise spacing, display and colours silently lose.
 - Videos over 10 MB are stored as hosted assets (`src/assets/*.asset.json`) and referenced by their `url`. Why: repository files have a 10 MB limit.
 - Pages not captured from the source site are built from `src/components/site/PageBlocks.tsx` with their copy/data in `src/lib/content/*`. Why: they keep the imported look while staying easy to edit.
+
+## GitHub Pages export
+
+- The site is also published to GitHub Pages by `.github/workflows/github-pages.yml`: `GITHUB_PAGES=true` turns on prerendering of every URL from `src/lib/static-pages.ts` (new routes or content collections must be added there). Why: GitHub Pages serves only plain files, and normal Lovable builds must stay unchanged.
+- The export assumes the site lives at the domain root (`<user>.github.io` repo) and uses `trailingSlash: "preserve"` only when `VITE_GITHUB_PAGES=true`. Why: markup uses root-relative `/site-assets` paths and Pages serves pages as `/path/`.
