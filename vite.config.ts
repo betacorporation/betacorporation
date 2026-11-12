@@ -12,7 +12,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages export: only when GITHUB_PAGES=true (see .github/workflows/github-pages.yml).
 // Normal Lovable builds are unaffected.
-const githubPages = process.env.GITHUB_PAGES === "true";
+const githubPages = process.env["GITHUB_PAGES"] === "true";
 const pagesFile = ".github-pages-paths.json";
 const pagePaths: string[] = githubPages && existsSync(pagesFile) ? JSON.parse(readFileSync(pagesFile, "utf8")) : [];
 
