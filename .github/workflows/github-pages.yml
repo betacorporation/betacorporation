@@ -35,13 +35,18 @@ jobs:
           VITE_GITHUB_PAGES: "true"
       - name: Add GitHub Pages extras
         run: |
-          cp scripts/github-pages-404.html dist/client/404.html
-          touch dist/client/.nojekyll
-          rm -f dist/client/_headers
+          # The export lands in .output/public on GitHub runners and dist/client in some setups.
+          if [ -f .output/public/index.html ]; then OUT=.output/public; else OUT=dist/client; fi
+          test -f "$OUT/index.html" || { echo "No exported pages found"; exit 1; }
+          rm -rf site && cp -r "$OUT" site
+          cp scripts/github-pages-404.html site/404.html
+          touch site/.nojekyll
+          rm -f site/_headers
+          echo "Exported $(find site -name index.html | wc -l) pages from $OUT"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: site
 
   deploy:
     needs: build
