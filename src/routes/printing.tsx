@@ -7,7 +7,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/printing")({
   head: () => pageHead("Print & Publications | Beta Corporation", "Books, training manuals, booklets, annual reports and policy documents printed and bound in Kenya. Build your specification and get a quote."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: PrintingPage,
 });
 

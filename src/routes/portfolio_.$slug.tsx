@@ -14,7 +14,7 @@ export const Route = createFileRoute("/portfolio_/$slug")({
     const project = loaderData ? findProject(loaderData.slug) : undefined;
     return project ? pageHead(`${project.title} — Case Study | Beta Corporation`, project.problem.slice(0, 155)) : { meta: [{ title: "Project unavailable | Beta Corporation" }, { name: "robots", content: "noindex" }] };
   },
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: ProjectPage,
   notFoundComponent: () => <MissingPage title="Project not found" text="We couldn't find that portfolio project." backHref="/portfolio" backLabel="Back to all projects" />,
   errorComponent: (props: ErrorComponentProps) => <PageError {...props} />,

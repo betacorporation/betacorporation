@@ -13,7 +13,7 @@ export const Route = createFileRoute("/services/$category/$service")({
     const found = loaderData ? findService(loaderData.category, loaderData.service) : undefined;
     return found ? pageHead(`${found.service.title} | Beta Corporation`, found.service.intro) : { meta: [{ title: "Service unavailable | Beta Corporation" }, { name: "robots", content: "noindex" }] };
   },
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: ServicePage,
   notFoundComponent: () => <MissingPage title="Service not found" text="We couldn't find that service." backHref="/services" backLabel="See all services" />,
   errorComponent: (props: ErrorComponentProps) => <PageError {...props} />,

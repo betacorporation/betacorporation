@@ -5,7 +5,7 @@ import { EMAIL, whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/account")({
   head: () => pageHead("Client Account | Beta Corporation", "Get help with your Beta Corporation projects, invoices and support requests."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: AccountPage,
 });
 

@@ -5,7 +5,7 @@ import { findProduct } from "@/lib/content/products";
 
 export const Route = createFileRoute("/chamabox")({
   head: () => pageHead("Beta Chama — Chama Management System | Beta Corporation", "Manage chama contributions, loans, meetings, votes and reports in one place with Beta Chama."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: ChamaboxRoute,
 });
 

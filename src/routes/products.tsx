@@ -6,7 +6,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/products")({
   head: () => pageHead("Products & Growth Packages | Beta Corporation", "Business software, hosting and ready-made growth packages from Beta Corporation — chama, HR and CRM systems, websites, branding and marketing."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: ProductsPage,
 });
 

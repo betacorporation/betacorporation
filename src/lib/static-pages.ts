@@ -9,9 +9,13 @@ export const FIXED_PAGES = [
   "/terms", "/account", "/services",
 ];
 
+// Non-page files that must also be exported (search engines read them).
+export const EXPORTED_FILES = ["/sitemap.xml"];
+
 export function staticPagePaths(): string[] {
   return [
     ...FIXED_PAGES,
+    ...EXPORTED_FILES,
     ...PORTFOLIO_PROJECTS.map(project => `/portfolio/${project.slug}`),
     ...BLOG_POSTS.map(post => `/blog/${post.slug}`),
     ...SERVICE_CATEGORIES.flatMap(category => [

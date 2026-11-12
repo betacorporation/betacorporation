@@ -13,7 +13,7 @@ export const Route = createFileRoute("/blog/$slug")({
     const post = loaderData ? findPost(loaderData.slug) : undefined;
     return post ? pageHead(`${post.title} | Beta Corporation Blog`, post.excerpt) : { meta: [{ title: "Article unavailable | Beta Corporation" }, { name: "robots", content: "noindex" }] };
   },
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: PostPage,
   notFoundComponent: () => <MissingPage title="Article not found" text="We couldn't find that article." backHref="/blog" backLabel="Back to the blog" />,
   errorComponent: (props: ErrorComponentProps) => <PageError {...props} />,

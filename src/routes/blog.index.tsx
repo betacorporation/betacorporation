@@ -5,7 +5,7 @@ import { BLOG_POSTS, formatPostDate } from "@/lib/content/blog";
 
 export const Route = createFileRoute("/blog/")({
   head: () => pageHead("Blog | Beta Corporation", "Practical tips on websites, SEO, social media and digital marketing for businesses in Kenya."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: BlogPage,
 });
 

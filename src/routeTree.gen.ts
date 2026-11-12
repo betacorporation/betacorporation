@@ -24,6 +24,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrintingRouteImport } from './routes/printing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WebsitesRouteImport } from './routes/websites'
@@ -109,6 +110,11 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -171,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/printing': typeof PrintingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/printing': typeof PrintingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/printing': typeof PrintingRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRoute
   '/terms': typeof TermsRoute
   '/websites': typeof WebsitesRoute
@@ -252,6 +261,7 @@ export interface FileRouteTypes {
     | '/printing'
     | '/privacy'
     | '/products'
+    | '/sitemap.xml'
     | '/solutions'
     | '/terms'
     | '/websites'
@@ -278,6 +288,7 @@ export interface FileRouteTypes {
     | '/printing'
     | '/privacy'
     | '/products'
+    | '/sitemap.xml'
     | '/solutions'
     | '/terms'
     | '/websites'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/printing'
     | '/privacy'
     | '/products'
+    | '/sitemap.xml'
     | '/solutions'
     | '/terms'
     | '/websites'
@@ -331,6 +343,7 @@ export interface RootRouteChildren {
   PrintingRoute: typeof PrintingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRoute
   TermsRoute: typeof TermsRoute
   WebsitesRoute: typeof WebsitesRoute
@@ -449,6 +462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -531,6 +551,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrintingRoute: PrintingRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRoute,
   TermsRoute: TermsRoute,
   WebsitesRoute: WebsitesRoute,

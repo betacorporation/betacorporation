@@ -5,7 +5,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/partners")({
   head: () => pageHead("Partners | Beta Corporation", "Partner with Beta Corporation — referral partners, agencies, freelancers and technology firms working together to grow businesses in Kenya."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: PartnersPage,
 });
 

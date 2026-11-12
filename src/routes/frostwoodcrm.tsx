@@ -5,7 +5,7 @@ import { findProduct } from "@/lib/content/products";
 
 export const Route = createFileRoute("/frostwoodcrm")({
   head: () => pageHead("Beta CRM — CRM, Invoicing & M-Pesa | Beta Corporation", "Manage customers, sales pipeline, invoices, M-Pesa payments and projects in one simple platform."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: FrostwoodcrmRoute,
 });
 

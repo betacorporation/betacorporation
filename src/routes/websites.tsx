@@ -7,7 +7,7 @@ import { whatsappLink } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/websites")({
   head: () => pageHead("Website Design Packages in Kenya | Beta Corporation", "Ready-made website packages for startups, shops, schools, hotels, clinics and more — fast, mobile-friendly and SEO-ready."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: WebsitesPage,
 });
 

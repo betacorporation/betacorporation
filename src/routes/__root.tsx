@@ -75,6 +75,8 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  // false keeps the root itself out of the sitemap; child pages decide for themselves.
+  staticData: { sitemap: false },
   head: () => ({
     // Replace these placeholders with the app's name and description when first building the app.
     // Each content route, / included, must still set its own head(). Never add og:image or
@@ -82,14 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Beta Corporation" },
+      { name: "description", content: "Web design, branding, digital marketing and printing for businesses in Kenya." },
+      { name: "author", content: "Beta Corporation" },
+      { property: "og:title", content: "Beta Corporation" },
+      { property: "og:description", content: "Web design, branding, digital marketing and printing for businesses in Kenya." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

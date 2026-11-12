@@ -5,7 +5,7 @@ import { BRAND, EMAIL, PHONE_DISPLAY } from "@/lib/site-contact";
 
 export const Route = createFileRoute("/terms")({
   head: () => pageHead("Terms & Conditions | Beta Corporation", "The terms that apply when you use the Beta Corporation website or engage us for design, development, marketing and printing services."),
-  staticData: { importedDocument: IMPORTED_DOCUMENT },
+  staticData: { sitemap: true, importedDocument: IMPORTED_DOCUMENT },
   component: TermsPage,
 });
 
