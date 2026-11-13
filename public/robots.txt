@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://betacorporation.lovable.app/sitemap.xml
+Sitemap: https://betacorporation.github.io/sitemap.xml
