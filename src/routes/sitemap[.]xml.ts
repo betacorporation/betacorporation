@@ -5,8 +5,8 @@ import { PORTFOLIO_PROJECTS } from "@/lib/content/portfolio";
 import { SERVICE_CATEGORIES } from "@/lib/content/services";
 import { isSitemapRouteIncluded, sitemapPathForLocation, sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap";
 
-// Public site origin. The GitHub Pages export sets SITE_URL to its own address (see .github/workflows/github-pages.yml).
-const DEFAULT_BASE_URL = "https://betacorporation.lovable.app";
+// Public site origin. The GitHub Pages site is the primary address; SITE_URL can override it (see .github/workflows/github-pages.yml).
+const DEFAULT_BASE_URL = "https://betacorporation.github.io";
 
 export const Route = createFileRoute("/sitemap.xml")({
   staticData: { sitemap: false },
