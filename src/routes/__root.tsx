@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     // One canonical address per real page (skipped on "not found" pages and pages left out of the sitemap).
     const leaf = matches.at(-1);
     const canonical =
-      leaf && leaf.status !== "notFound" && !leaf.globalNotFound && leaf.staticData?.sitemap === true
+      leaf && leaf.status !== "notFound" && leaf.staticData?.sitemap === true
         ? canonicalUrl(leaf.pathname)
         : undefined;
     return {
