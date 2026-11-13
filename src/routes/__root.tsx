@@ -87,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Beta Corporation" },
       { name: "description", content: "Web design, branding, digital marketing and printing for businesses in Kenya." },
       { name: "author", content: "Beta Corporation" },
+      { name: "google-site-verification", content: "SOtJxXNjqhb1UQNu9mJNkciRAdXIlIyhjj2-wUjXPPo" },
       { property: "og:title", content: "Beta Corporation" },
       { property: "og:description", content: "Web design, branding, digital marketing and printing for businesses in Kenya." },
       { property: "og:type", content: "website" },
