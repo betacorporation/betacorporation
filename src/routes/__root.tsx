@@ -13,6 +13,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { canonicalUrl } from "../lib/canonical";
+import { isSitemapRouteIncluded } from "../lib/sitemap";
 
 function NotFoundComponent() {
   return (
@@ -77,7 +79,14 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   // false keeps the root itself out of the sitemap; child pages decide for themselves.
   staticData: { sitemap: false },
-  head: () => ({
+  head: ({ matches }) => {
+    // One canonical address per real page (skipped on "not found" pages and pages left out of the sitemap).
+    const leaf = matches.at(-1);
+    const canonical =
+      leaf && leaf.status !== "notFound" && !leaf.globalNotFound && isSitemapRouteIncluded(router_routeOf(leaf))
+        ? canonicalUrl(leaf.pathname)
+        : undefined;
+    return {
     // Replace these placeholders with the app's name and description when first building the app.
     // Each content route, / included, must still set its own head(). Never add og:image or
     // twitter:image here: every page without its own would inherit the root's preview image.
