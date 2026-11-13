@@ -47,3 +47,4 @@ use the editor.
 
 - `/sitemap.xml` is built from each route's required `staticData.sitemap` plus the portfolio, blog and service lists; new content collections must be added to its handler and to `src/lib/static-pages.ts`. Why: both the Lovable site and the GitHub Pages export list every page from the same source.
 - The sitemap address comes from `SITE_URL` (set by the GitHub Pages workflow, which also rewrites the `Sitemap:` line in robots.txt) and falls back to the Lovable URL. Why: each host must list its own addresses.
+- Every sitemap-included page gets a canonical link and og:url to the GitHub Pages address (`SITE_ORIGIN` in `src/lib/canonical.ts`, trailing slash), set once in the root head; the sitemap uses the same origin. Why: one main address per page for Google.
