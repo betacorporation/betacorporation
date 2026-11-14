@@ -15,7 +15,7 @@ describe("business details search engines read", () => {
   it("uses the GitHub Pages address everywhere the site is named", () => {
     expect(SITE_URL).toBe(SITE_ORIGIN);
     expect(SITE_URL).toBe("https://betacorporation.github.io");
-    expect(organizationJsonLd()["@graph"][0].url).toBe("https://betacorporation.github.io/");
+    expect(organizationJsonLd()["@graph"][0]?.url).toBe("https://betacorporation.github.io/");
   });
 
   it("keeps the brand name consistent", () => {
