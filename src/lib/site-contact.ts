@@ -1,6 +1,8 @@
 // Single source of truth for the business's public contact details.
 export const BRAND = "Beta Corporation";
-export const SITE_URL = "https://betacorporation.lovable.app";
+// The GitHub Pages address is the site's main address (see src/lib/canonical.ts), so anything
+// that tells a person or an AI where to find us points there, never at the Lovable copy.
+export const SITE_URL = SITE_ORIGIN;
 export const CONTACT_PERSON = "Jøsh Lêê";
 export const PHONE_DISPLAY = "+254 729 683 696";
 export const PHONE_TEL = "tel:+254729683696";

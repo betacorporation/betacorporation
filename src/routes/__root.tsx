@@ -14,6 +14,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { canonicalUrl } from "../lib/canonical";
+import { organizationJsonLd } from "../lib/organization";
 
 function NotFoundComponent() {
   return (
@@ -95,6 +96,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Beta Corporation" },
       { name: "description", content: "Beta Corporation is a Kenyan tech company building websites, custom software, and digital solutions that help individuals and businesses grow." },
       { name: "author", content: "Beta Corporation" },
+      // The name Google shows above the result. Without these it falls back to the host name ("GitHub").
+      { property: "og:site_name", content: "Beta Corporation" },
+      { name: "application-name", content: "Beta Corporation" },
       { name: "google-site-verification", content: "SOtJxXNjqhb1UQNu9mJNkciRAdXIlIyhjj2-wUjXPPo" },
       { property: "og:title", content: "Beta Corporation" },
       { property: "og:description", content: "Beta Corporation is a Kenyan tech company building websites, custom software, and digital solutions that help individuals and businesses grow." },
@@ -112,6 +116,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       ...(canonical ? [{ rel: "canonical", href: canonical }] : []),
     ],
+    // Business details on every page, not just the homepage, so search engines read the same name everywhere.
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(organizationJsonLd()) }],
     };
   },
   shellComponent: RootShell,

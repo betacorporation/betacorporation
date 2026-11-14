@@ -7,7 +7,7 @@ import capturedCSS from "../styles/site.css?raw";
 import heroDesktopVideo from "../assets/hero-desktop.mp4.asset.json";
 import heroMobileVideo from "../assets/hero-mobile.mp4.asset.json";
 import { SiteFooter, SiteHeader, SiteOverlays } from "@/components/site/SiteChrome";
-import { SHORT_DESCRIPTION, organizationJsonLd } from "@/lib/organization";
+import { SHORT_DESCRIPTION } from "@/lib/organization";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -19,7 +19,6 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(organizationJsonLd()) }],
   }),
   staticData: { sitemap: true, importedDocument: { html: { "className": "__variable_b021ee __variable_f166df", "lang": "en" }, body: { "className": "\x66ont-body \x61ntialiased \x66lex \x66lex-col \x6din-h-screen \x62g-background \x74ext-foreground" } } },
   component: Index,
