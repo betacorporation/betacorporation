@@ -11,9 +11,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Us | Beta Corporation" },
-      { name: "description", content: "Meet Beta Corporation — a digital studio crafting websites, e-commerce stores and brand experiences that help businesses grow." },
+      { name: "description", content: "Beta Corporation is a Kenyan technology company building websites, custom software and digital solutions that help individuals and businesses grow." },
       { property: "og:title", content: "About Us | Beta Corporation" },
-      { property: "og:description", content: "Meet Beta Corporation — a digital studio crafting websites, e-commerce stores and brand experiences that help businesses grow." },
+      { property: "og:description", content: "Beta Corporation is a Kenyan technology company building websites, custom software and digital solutions that help individuals and businesses grow." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -32,7 +32,7 @@ function Index() {
         <div className={"\x73pace-y-16 \x70y-12 \x61nimate-fade-in-up"} style={{ transform: "translateY(0px)", opacity: "1" }}>
           <section className={"text-center \x63ontainer \x6dx-auto \x70x-4 [width:100%]"}>
             <h1 className={"\x74ext-4xl \x6dd:\x74ext-5xl \x66ont-bold text-primary mb-4"}>About Beta Corporation</h1>
-            <p className={"\x74ext-lg \x6dd:\x74ext-xl \x6dx-auto mb-8 [color:hsl(var(--foreground)/.8)] [max-width:48rem]"}>We are a dynamic digital solutions agency based in Nairobi, specializing in crafting impactful websites, e-commerce platforms, and online experiences that drive business growth in the digital landscape.</p>
+            <p className={"\x74ext-lg \x6dd:\x74ext-xl \x6dx-auto mb-8 [color:hsl(var(--foreground)/.8)] [max-width:48rem]"}>Beta Corporation is a Kenyan technology and digital solutions company that helps individuals and businesses grow through innovation. Building the Future Through Technology.</p>
             <div className={"\x6dx-auto [max-width:28rem]"}>
               <img className={"rounded-2xl \x73hadow-xl w-full h-auto"} style={{ color: "transparent" }} alt="Designer sketching website wireframes beside a tablet" width="1024" height="1024" decoding="async" src="/site-assets/beta-mission.jpg" />
             </div>
@@ -42,11 +42,11 @@ function Index() {
               <div className={"\x73pace-y-6"}>
                 <div>
                   <h2 className={"\x74ext-3xl \x66ont-bold text-primary"}>Our Mission</h2>
-                  <p className="mt-2 [color:hsl(var(--foreground)/.8)]">Our mission is to empower businesses across East Africa with innovative and effective digital solutions. We are committed to delivering top-quality websites and applications that are not only visually stunning but also drive tangible results and authentically reflect your unique brand.</p>
+                  <p className="mt-2 [color:hsl(var(--foreground)/.8)]">Our mission is to turn ideas into reality with professional, reliable, user-friendly digital experiences.</p>
                 </div>
                 <div>
-                  <h2 className={"\x74ext-3xl \x66ont-bold text-primary"}>Our Vision</h2>
-                  <p className="mt-2 [color:hsl(var(--foreground)/.8)]">Our vision is to be a leading catalyst for digital transformation, helping businesses leverage technology to connect with their audiences, foster sustainable growth, and make a lasting positive impact in their respective industries.</p>
+                  <h2 className={"\x74ext-3xl \x66ont-bold text-primary"}>What We Do</h2>
+                  <p className="mt-2 [color:hsl(var(--foreground)/.8)]">We build websites (business sites, online shops, portfolios, landing pages, blogs, redesigns and maintenance), custom software (business systems, mobile apps, web apps, automation and integrations) and digital solutions (online presence setup, business email and domains, social media setup, digital marketing support and tech consulting). We work in clear steps: consultation, planning, design and development, review, launch, then ongoing support. Open Monday to Saturday.</p>
                 </div>
               </div>
               <div className={"w-full \x6dx-auto rounded-lg \x73hadow-xl \x62g-secondary/\x340 flex items-center justify-center [&]:aspect-square [&]:max-w-[450px] [&]:relative [overflow:hidden]"}>
