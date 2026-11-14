@@ -1,4 +1,6 @@
 // Single source of truth for the business's public contact details.
+import { SITE_ORIGIN } from "@/lib/canonical";
+
 export const BRAND = "Beta Corporation";
 // The GitHub Pages address is the site's main address (see src/lib/canonical.ts), so anything
 // that tells a person or an AI where to find us points there, never at the Lovable copy.
